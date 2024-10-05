@@ -1,13 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Text;
+using System.Collections;
 using UnityEngine;
 using UnityWebGLSpeechDetection;
 using UnityWebGLSpeechSynthesis;
 
-namespace VoiceTracking
+namespace _Source.Voice
 {
-    public class Example01DictationSynthesis : MonoBehaviour
+    public class Direction : MonoBehaviour
     {
         /// <summary>
         /// Reference to the detection plugin
@@ -20,7 +18,7 @@ namespace VoiceTracking
         private ISpeechSynthesisPlugin _mSpeechSynthesisPlugin = null;
 
         // Use this for initialization
-        IEnumerator Start()
+        private IEnumerator Start()
         {
             _mSpeechDetectionPlugin = SpeechDetectionUtils.GetInstance();
 
@@ -53,21 +51,15 @@ namespace VoiceTracking
             _mSpeechDetectionPlugin.AddListenerOnDetectionResult(HandleDetectionResult);
         }
         
-        bool HandleDetectionResult(DetectionResult detectionResult)
+        private static bool HandleDetectionResult(DetectionResult detectionResult)
         {
-            if (null == detectionResult)
-            {
-                return false;
-            }
-
-            if (null == detectionResult.results)
+            if (null == detectionResult?.results)
             {
                 return false;
             }
             
             if (detectionResult.results[^1].isFinal)
             {
-                
                 Debug.Log("Got final words: " + detectionResult.results[^1].alternatives[0].transcript);
             }
 
