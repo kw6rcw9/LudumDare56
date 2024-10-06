@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityWebGLSpeechDetection;
 using UnityWebGLSpeechSynthesis;
@@ -7,6 +9,9 @@ namespace _Source.Voice
 {
     public class Direction : MonoBehaviour
     {
+        public static Action<int> movementAction;
+        public static Action<int> scoundrelAction;
+        
         /// <summary>
         /// Reference to the detection plugin
         /// </summary>
@@ -60,7 +65,47 @@ namespace _Source.Voice
             
             if (detectionResult.results[^1].isFinal)
             {
-                Debug.Log("Got final words: " + detectionResult.results[^1].alternatives[0].transcript);
+                string transcript = detectionResult.results[^1].alternatives[0].transcript;
+                string[] splitedTranscript = transcript.Split();
+                for (int i = 0; i < splitedTranscript.Length; i++)
+                {
+                    int direction = 0;
+                    int scoundrel = 0;
+                    switch (splitedTranscript[i].ToLower())
+                    {
+                        case "вправо" or "right" or "право" or "права":
+                            direction = 1;
+                            break;
+                        case "вниз" or "down" or "низ":
+                            direction = 2;
+                            break;
+                        case "влево" or "left" or "лево":
+                            direction = 3;
+                            break;
+                        case "вверх" or "up" or "верх":
+                            direction = 4;
+                            break;
+                        
+                        case "мама" or "mother":
+                            scoundrel = 1;
+                            break;
+                        case "гол":
+                            scoundrel = 2;
+                            break;
+                    }
+
+                    if (direction != 0)
+                    {
+                        movementAction?.Invoke(direction);
+                        Debug.Log("Invoked movementAction: " + direction);
+                    }
+
+                    if (scoundrel != 0)
+                    {
+                        scoundrelAction?.Invoke(scoundrel);
+                        Debug.Log("Invoked scoundrelAction: " + scoundrel);
+                    }
+                }
             }
 
             return false;
