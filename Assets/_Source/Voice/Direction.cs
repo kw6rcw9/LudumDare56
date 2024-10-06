@@ -21,7 +21,10 @@ namespace _Source.Voice
         /// Reference to the synthesis plugin
         /// </summary>
         private ISpeechSynthesisPlugin _mSpeechSynthesisPlugin = null;
-
+        
+        private int previousLength = 0; 
+        private string previousTranscript = ""; 
+        
         // Use this for initialization
         private IEnumerator Start()
         {
@@ -56,57 +59,62 @@ namespace _Source.Voice
             _mSpeechDetectionPlugin.AddListenerOnDetectionResult(HandleDetectionResult);
         }
         
-        private static bool HandleDetectionResult(DetectionResult detectionResult)
+        private bool HandleDetectionResult(DetectionResult detectionResult)
         {
             if (null == detectionResult?.results)
             {
                 return false;
             }
-            
-            if (detectionResult.results[^1].isFinal)
+            string transcript = detectionResult.results[^1].alternatives[0].transcript;
+            string[] splitedTranscript = transcript.Split(new char[] { ' ', '-' }, StringSplitOptions.RemoveEmptyEntries);
+
+            if (splitedTranscript[^1] == previousTranscript && previousLength < transcript.Length)
             {
-                string transcript = detectionResult.results[^1].alternatives[0].transcript;
-                string[] splitedTranscript = transcript.Split();
-                for (int i = 0; i < splitedTranscript.Length; i++)
-                {
-                    int direction = 0;
-                    int scoundrel = 0;
-                    switch (splitedTranscript[i].ToLower())
-                    {
-                        case "вправо" or "right" or "право" or "права":
-                            direction = 1;
-                            break;
-                        case "вниз" or "down" or "низ":
-                            direction = 2;
-                            break;
-                        case "влево" or "left" or "лево":
-                            direction = 3;
-                            break;
-                        case "вверх" or "up" or "верх":
-                            direction = 4;
-                            break;
-                        
-                        case "мама" or "mother":
-                            scoundrel = 1;
-                            break;
-                        case "гол":
-                            scoundrel = 2;
-                            break;
-                    }
-
-                    if (direction != 0)
-                    {
-                        movementAction?.Invoke(direction);
-                        Debug.Log("Invoked movementAction: " + direction);
-                    }
-
-                    if (scoundrel != 0)
-                    {
-                        scoundrelAction?.Invoke(scoundrel);
-                        Debug.Log("Invoked scoundrelAction: " + scoundrel);
-                    }
-                }
+                return false;
             }
+
+            Debug.Log("Transcription: " + splitedTranscript[^1] + "; prevTranscription: " + previousTranscript + "; prevTranscription: " + previousLength + "; Length: " + splitedTranscript.Length + "; Full: " + transcript);
+
+            int direction = 0;
+            int scoundrel = 0;
+            
+            switch (splitedTranscript[^1].ToLower())
+            {
+                case "вправо" or "right" or "право" or "права":
+                    direction = 1;
+                    break;
+                case "вниз" or "down" or "низ":
+                    direction = 2;
+                    break;
+                case "влево" or "left" or "лево":
+                    direction = 3;
+                    break;
+                case "вверх" or "up" or "верх":
+                    direction = 4;
+                    break;
+                        
+                case "мама" or "mother":
+                    scoundrel = 1;
+                    break;
+                case "гол":
+                    scoundrel = 2;
+                    break;
+            }
+
+            if (direction != 0)
+            {
+                movementAction?.Invoke(direction);
+                Debug.Log("Invoked movementAction: " + direction);
+            }
+
+            if (scoundrel != 0)
+            {
+                scoundrelAction?.Invoke(scoundrel);
+                Debug.Log("Invoked scoundrelAction: " + scoundrel);
+            }
+
+            previousLength = splitedTranscript.Length;
+            previousTranscript = splitedTranscript[^1];
 
             return false;
         }
