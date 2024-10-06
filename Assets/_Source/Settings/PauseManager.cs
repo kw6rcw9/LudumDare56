@@ -113,7 +113,7 @@ namespace _Source.Settings
                 SoundOn();
             }
             PlayerPrefs.Save();
-            Debug.Log("ChangeSound worked out; Music: " + PlayerPrefs.GetFloat("Sound"));
+            Debug.Log("ChangeSound worked out; Sound: " + PlayerPrefs.GetFloat("Sound"));
         }
         
         public void ChangeMusic(float value)
