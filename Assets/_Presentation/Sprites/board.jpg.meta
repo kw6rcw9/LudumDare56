@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: fa0e261ee4c1642d4b4e4355daa7208d
+guid: c0be93bd2a33ae64e80b1fcf6d2f1c56
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -49,7 +49,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 744, y: 807, z: 91, w: 951}
+  spriteBorder: {x: 38, y: 37, z: 38, w: 35}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -110,22 +110,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: IMG_0747_0
+      name: 91v+sEF2RAL._AC_UL800_QL65_ 1_0
       rect:
         serializedVersion: 2
-        x: 762
-        y: 823
-        width: 223
-        height: 172
+        x: 41
+        y: 40
+        width: 722
+        height: 722
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8c7bcfd717a487b42a48b89f1fa25ab5
-      internalID: 2080772362
+      spriteID: 1c0460b9650c23847bca4695e612bfa7
+      internalID: -302046170
       vertices: []
       indices: 
       edges: []
@@ -141,7 +141,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      IMG_0747_0: 2080772362
+      91v+sEF2RAL._AC_UL800_QL65_ 1_0: -302046170
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
