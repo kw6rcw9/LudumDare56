@@ -73,7 +73,7 @@ namespace _Source.Voice
                 return false;
             }
 
-            Debug.Log("Transcription: " + splitedTranscript[^1] + "; prevTranscription: " + previousTranscript + "; prevTranscription: " + previousLength + "; Length: " + splitedTranscript.Length + "; Full: " + transcript);
+            // Debug.Log("Transcription: " + splitedTranscript[^1] + "; prevTranscription: " + previousTranscript + "; prevTranscription: " + previousLength + "; Length: " + splitedTranscript.Length + "; Full: " + transcript);
 
             int direction = 0;
             int scoundrel = 0;
