@@ -7,9 +7,10 @@ namespace Core.MapSystem.Data
     public class TieInfo : MonoBehaviour
     {
         [field: SerializeField] public bool IsNeeded { get; set; }
-        [SerializeField] private Color loseColor;
-        [SerializeField] private Color rightColor;
-        [SerializeField] private Color firstTile;
+        [SerializeField] private Sprite loseColor;
+        [SerializeField] private Sprite rightColor;
+        [SerializeField] private Sprite firstTile;
+        
         private bool _errorMove;
         public static Action LoseAction;
         public static Action WinAction;
@@ -19,7 +20,7 @@ namespace Core.MapSystem.Data
             if (!TryGetComponent(out Rigidbody rb))
             {
                 Debug.Log("MAMAAAAAAA");
-                transform.GetComponent<SpriteRenderer>().color = firstTile;
+                transform.GetComponent<SpriteRenderer>().sprite = firstTile;
             }
         }
 
@@ -36,7 +37,7 @@ namespace Core.MapSystem.Data
             else if(IsNeeded && PathGenerator.CorrectPath.Peek() == transform)
             {
                 PathGenerator.CorrectPath.Dequeue();
-                transform.GetComponent<SpriteRenderer>().color = rightColor;
+                transform.GetComponent<SpriteRenderer>().sprite = rightColor;
                 if (!PathGenerator.CorrectPath.TryPeek(out Transform res))
                     Win();
 
@@ -56,7 +57,7 @@ namespace Core.MapSystem.Data
 
         void Lose()
         {
-            transform.GetComponent<SpriteRenderer>().color = loseColor;
+            transform.GetComponent<SpriteRenderer>().sprite = loseColor;
             Debug.Log("Lose");
             LoseAction?.Invoke();
         }
