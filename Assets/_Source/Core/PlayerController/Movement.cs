@@ -34,20 +34,20 @@ namespace Core.PlayerController
         public void MoveLeft()
         {
             //_player.transform.Translate(new Vector3(-_player.DestinationToMoveHor,0,0));
-            _player.transform.DOMove(new Vector3(-_player.DestinationToMoveHor,0,0), _player.Speed);
+            _player.transform.DOMove(new Vector3(-_player.DestinationToMoveHor+_player.transform.position.x,_player.transform.position.y,_player.transform.position.z), _player.Speed);
         }
 
         public void MoveRight()
         {
             //_player.transform.Translate(new Vector3(_player.DestinationToMoveHor,0,0));
-            _player.transform.DOMove(new Vector3(_player.DestinationToMoveHor, 0, 0), _player.Speed);
+            _player.transform.DOMove(new Vector3(_player.DestinationToMoveHor+_player.transform.position.x, _player.transform.position.y, _player.transform.position.z), _player.Speed);
 
         }
 
         public void MoveUp()
         {
             //_player.transform.Translate(new Vector3(0,0,_player.DestinationToMoveVer));
-            _player.transform.DOMove(new Vector3(0, 0, _player.DestinationToMoveVer), _player.Speed);
+            _player.transform.DOMove(new Vector3(_player.transform.position.x, _player.transform.position.y, _player.DestinationToMoveVer+_player.transform.position.z), _player.Speed);
 
         }
 

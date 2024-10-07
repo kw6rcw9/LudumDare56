@@ -9,6 +9,7 @@ namespace Core.PlayerController
       [field: SerializeField] public float DestinationToMoveHor { get; set; }
       [field: SerializeField] public float DestinationToMoveVer { get; set; }
       [field: SerializeField] public TieInfo CurrentTile { get; set; }
+    
       
       
    }
