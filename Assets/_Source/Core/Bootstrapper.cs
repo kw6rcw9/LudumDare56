@@ -12,7 +12,7 @@ namespace Core
         [SerializeField] private LanguageManager languageManager;
         [SerializeField] private LevelManager levelManager;
         private Movement _movement;
-        private void Awake()
+        private void Start()
         {
             if (player != null)
             {
