@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
@@ -8,11 +10,18 @@ namespace _Source.Settings
 {
     public class PauseManager : MonoBehaviour
     {
+        public static Action SetLanguageRu;
+        public static Action SetLanguageEn;
+        
         public Button pauseButton;
         public Button continueButton;
+        public Sprite continueButtonRu;
+        public Sprite continueButtonEn;
         public GameObject menuObject;
         public Button langRuButton;
         public Button langEnButton;
+        public Sprite buttonLangOn;
+        public Sprite buttonLangOff;
         public Button soundButton;
         public Button musicButton;
         public Slider soundSlider;
@@ -23,6 +32,20 @@ namespace _Source.Settings
         public Sprite soundButtonSprite;
         public Sprite soundButtonOffSprite;
         public AudioSource musicSource;
+        public GameObject settingsPannel;
+        public Sprite settingsPannelRu;
+        public Sprite settingsPannelEn;
+
+        public void Dispose()
+        {
+            LanguageManager.SetLanguageEnAction -= setLangEn;
+            LanguageManager.SetLanguageRuAction -= setLangRu;
+        }
+        private void Awake()
+        {
+            LanguageManager.SetLanguageEnAction += setLangEn;
+            LanguageManager.SetLanguageRuAction += setLangRu;
+        }
 
         private void Start()
         {
@@ -35,13 +58,31 @@ namespace _Source.Settings
             musicSource.Play();
         }
 
+        private void setLangRu()
+        {
+            langRuButton.gameObject.GetComponent<Image>().sprite = buttonLangOn;
+            langEnButton.gameObject.GetComponent<Image>().sprite = buttonLangOff;
+            settingsPannel.GetComponent<Image>().sprite = settingsPannelRu;
+            continueButton.gameObject.GetComponent<Image>().sprite = continueButtonRu;
+        }
+
+        private void setLangEn()
+        {
+            langEnButton.gameObject.GetComponent<Image>().sprite = buttonLangOn;
+            langRuButton.gameObject.GetComponent<Image>().sprite = buttonLangOff;
+            settingsPannel.GetComponent<Image>().sprite = settingsPannelEn;
+            continueButton.gameObject.GetComponent<Image>().sprite = continueButtonEn;
+        }
+        
         private void SetLangRu()
         {
+            SetLanguageRu?.Invoke();
             PlayerPrefs.SetInt("Lang", 1);
             Debug.Log("SetLangRu worked out");
         }
         private void SetLangEn()
         {
+            SetLanguageEn?.Invoke();
             PlayerPrefs.SetInt("Lang", 0);
             Debug.Log("SetLangEn worked out");
         }
@@ -113,7 +154,7 @@ namespace _Source.Settings
                 SoundOn();
             }
             PlayerPrefs.Save();
-            Debug.Log("ChangeSound worked out; Music: " + PlayerPrefs.GetFloat("Sound"));
+            Debug.Log("ChangeSound worked out; Sound: " + PlayerPrefs.GetFloat("Sound"));
         }
         
         public void ChangeMusic(float value)
