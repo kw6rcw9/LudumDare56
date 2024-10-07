@@ -23,8 +23,8 @@ namespace _Source.Voice
         private ISpeechSynthesisPlugin _mSpeechSynthesisPlugin = null;
         
         private int previousLength = 0; 
-        private string previousTranscript = ""; 
-        
+        private string previousTranscript = "";
+
         // Use this for initialization
         private IEnumerator Start()
         {

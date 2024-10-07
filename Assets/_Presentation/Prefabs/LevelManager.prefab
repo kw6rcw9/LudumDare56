@@ -226,10 +226,10 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6204964562065731059}
-  - {fileID: 1710273073115094238}
-  - {fileID: 1337142302486763099}
   - {fileID: 7585530364718575474}
   - {fileID: 7322388256517658599}
+  - {fileID: 1710273073115094238}
+  - {fileID: 1337142302486763099}
   m_Father: {fileID: 8523501645122154381}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -327,7 +327,7 @@ MonoBehaviour:
   timeTextTime: {fileID: 841018303190433283}
   nextButton: {fileID: 4463443092793120001}
   nextSceneName: 
-  nextButtonEN: {fileID: 1695811837, guid: 8cd19486311115c4ab87758b8595abbc, type: 3}
+  nextButtonEN: {fileID: -1011436693, guid: 4094f08e68366ad459cbe2dd888cbe20, type: 3}
   nextButtonRU: {fileID: 1695811837, guid: 8cd19486311115c4ab87758b8595abbc, type: 3}
   restartButton: {fileID: 8033782316723433782}
   restartButtonEN: {fileID: 1989384682, guid: da0b1da1ac19d2142abcb2139d106463, type: 3}

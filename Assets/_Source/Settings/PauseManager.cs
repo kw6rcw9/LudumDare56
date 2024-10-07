@@ -36,6 +36,11 @@ namespace _Source.Settings
         public Sprite settingsPannelRu;
         public Sprite settingsPannelEn;
 
+        public void Dispose()
+        {
+            LanguageManager.SetLanguageEnAction -= setLangEn;
+            LanguageManager.SetLanguageRuAction -= setLangRu;
+        }
         private void Awake()
         {
             LanguageManager.SetLanguageEnAction += setLangEn;
