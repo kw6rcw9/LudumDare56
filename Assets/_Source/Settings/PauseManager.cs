@@ -15,9 +15,13 @@ namespace _Source.Settings
         
         public Button pauseButton;
         public Button continueButton;
+        public Sprite continueButtonRu;
+        public Sprite continueButtonEn;
         public GameObject menuObject;
         public Button langRuButton;
         public Button langEnButton;
+        public Sprite buttonLangOn;
+        public Sprite buttonLangOff;
         public Button soundButton;
         public Button musicButton;
         public Slider soundSlider;
@@ -28,6 +32,15 @@ namespace _Source.Settings
         public Sprite soundButtonSprite;
         public Sprite soundButtonOffSprite;
         public AudioSource musicSource;
+        public GameObject settingsPannel;
+        public Sprite settingsPannelRu;
+        public Sprite settingsPannelEn;
+
+        private void Awake()
+        {
+            LanguageManager.SetLanguageEnAction += setLangEn;
+            LanguageManager.SetLanguageRuAction += setLangRu;
+        }
 
         private void Start()
         {
@@ -40,6 +53,22 @@ namespace _Source.Settings
             musicSource.Play();
         }
 
+        private void setLangRu()
+        {
+            langRuButton.gameObject.GetComponent<Image>().sprite = buttonLangOn;
+            langEnButton.gameObject.GetComponent<Image>().sprite = buttonLangOff;
+            settingsPannel.GetComponent<Image>().sprite = settingsPannelRu;
+            continueButton.gameObject.GetComponent<Image>().sprite = continueButtonRu;
+        }
+
+        private void setLangEn()
+        {
+            langEnButton.gameObject.GetComponent<Image>().sprite = buttonLangOn;
+            langRuButton.gameObject.GetComponent<Image>().sprite = buttonLangOff;
+            settingsPannel.GetComponent<Image>().sprite = settingsPannelEn;
+            continueButton.gameObject.GetComponent<Image>().sprite = continueButtonEn;
+        }
+        
         private void SetLangRu()
         {
             SetLanguageRu?.Invoke();
