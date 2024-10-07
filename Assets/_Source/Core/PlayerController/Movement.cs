@@ -13,6 +13,8 @@ namespace Core.PlayerController
 
         [SerializeField] private AudioSource AudioSource;
         [SerializeField] private AudioClip MoveSound;
+        private bool _lookingLeft;
+        
         
 
         private Timer _timer;
@@ -44,6 +46,9 @@ namespace Core.PlayerController
         }
         public void MoveLeft()
         {
+            if(!_lookingLeft)
+                _player.GetComponent<SpriteRenderer>().flipX = false;
+            _lookingLeft = true;
             _player.Animator.Play("Walk Left");
             //_player.transform.Translate(new Vector3(-_player.DestinationToMoveHor,0,0));
             _player.transform.DOMove(new Vector3(-_player.DestinationToMoveHor+_player.transform.position.x,_player.transform.position.y,_player.transform.position.z), _player.Speed)
@@ -52,7 +57,10 @@ namespace Core.PlayerController
 
         public void MoveRight()
         {
-            _player.GetComponent<SpriteRenderer>().flipX = true;
+            if(_lookingLeft)
+                _player.GetComponent<SpriteRenderer>().flipX = true;
+            _lookingLeft = false;
+
             _player.Animator.Play("Walk Left");
             //_player.transform.Translate(new Vector3(_player.DestinationToMoveHor,0,0));
             _player.transform.DOMove(new Vector3(_player.DestinationToMoveHor+_player.transform.position.x, _player.transform.position.y, _player.transform.position.z), _player.Speed)
@@ -62,6 +70,7 @@ namespace Core.PlayerController
 
         public void MoveUp()
         {
+            
             _player.Animator.Play("Walk Up");
             //_player.transform.Translate(new Vector3(0,0,_player.DestinationToMoveVer));
             _player.transform.DOMove(new Vector3(_player.transform.position.x, _player.transform.position.y, _player.DestinationToMoveVer+_player.transform.position.z), _player.Speed)
