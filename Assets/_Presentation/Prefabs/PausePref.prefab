@@ -385,6 +385,7 @@ MonoBehaviour:
   soundButtonSprite: {fileID: 1638250541, guid: d32f762b2e3ae0342918ff90ce4d0ece, type: 3}
   soundButtonOffSprite: {fileID: -1917379790, guid: 6263dca005be5fb4aacafa64a18bbc92, type: 3}
   musicSource: {fileID: 8466215405017597444}
+  SFXSource: {fileID: 0}
   settingsPannel: {fileID: 9025542248947849743}
   settingsPannelRu: {fileID: 21300000, guid: 853cb1a21a6891d47bf3b7f0c7d5f488, type: 3}
   settingsPannelEn: {fileID: 21300000, guid: 3f9979ec848c5cb45905d17dc3ab40f6, type: 3}
@@ -398,7 +399,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -618891752459820670, guid: a70d987b262ee2d4caeb676eac32f44e, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 9e2c384ab94ae534da6d5011bfcee194, type: 3}
+  m_audioClip: {fileID: 8300000, guid: c99ef6ac4bb6cf54fb63262e45ecd00d, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
