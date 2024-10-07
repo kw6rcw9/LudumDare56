@@ -268,7 +268,7 @@ GameObject:
   - component: {fileID: 77133320}
   - component: {fileID: 77133319}
   m_Layer: 5
-  m_Name: Image
+  m_Name: LeaderboardUser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -372,6 +372,9 @@ MonoBehaviour:
   Arcade: {fileID: 508421856}
   ArcadeEN: {fileID: -1400441232, guid: 4b4429d2bbfeaca4d877801f6c85ee5b, type: 3}
   ArcadeRU: {fileID: -1573678809, guid: 6c750d9d9c895ab4ead0bed3fdfcde05, type: 3}
+  Leaderboard: {fileID: 881830286}
+  LeaderboardButton: {fileID: 1434190011}
+  LeaderboardCloseButton: {fileID: 1424197121}
 --- !u!4 &112468019
 Transform:
   m_ObjectHideFlags: 0
@@ -935,7 +938,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &881830287
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1359,7 +1362,7 @@ GameObject:
   - component: {fileID: 1424197122}
   - component: {fileID: 1424197121}
   m_Layer: 5
-  m_Name: Button
+  m_Name: LeaderBoardCloseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
