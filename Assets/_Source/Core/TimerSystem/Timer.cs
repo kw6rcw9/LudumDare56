@@ -6,20 +6,29 @@ namespace Core.TimerSystem
 {
     public class Timer : MonoBehaviour
     {
-        [SerializeField] private float timeLeft;
-        [SerializeField] private float actionsAfterSeconds;
+        [SerializeField] private Animator animator;
+        [SerializeField]
+        private int startTime;
+        [SerializeField] private int timeLeft;
+        [SerializeField] private int actionsAfterSeconds;
         private bool isRunnning = true;
         private bool _runActionsCoroutine;
 
+        
         public void SetTimer()
         {
-            isRunnning = true;
+            StartCoroutine(StartTimer());
+        }
+
+        public void StopTimer()
+        {
+            StopAllCoroutines();
         }
         
         void Start()
         {
-            UpdateTimerText();
             StartCoroutine(StartTimer());
+            
         }
 
         void Update()
@@ -54,22 +63,30 @@ namespace Core.TimerSystem
         {
             isRunnning = false;
             Debug.Log("Таймер закончился!");
-            // Здесь можно добавить дополнительные действия по окончании таймера
+           animator.Play("Electic Shock");
         }
 
         public void Action()
         {
-            
+            animator.Play("Idle");
         }
 
         public IEnumerator StartTimer()
         {
+                var actionDelay = 0;
             while (timeLeft > 0)
             {
                 timeLeft -= 1;
+                actionDelay++;
+                if (actionDelay >= 3)
+                {
+                    actionDelay = 0;
+                    Action();
+                }
                 yield return new WaitForSeconds(1);
                 
             }
+            
             
                 TimerEnded();
             
