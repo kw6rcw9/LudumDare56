@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Core.MapSystem.Data;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -29,6 +30,18 @@ public class LevelManager : MonoBehaviour
     
     private float startedAt;
 
+    private void OnEnable()
+    {
+        TieInfo.LoseAction += Lose;
+        TieInfo.WinAction += Win;
+    }
+
+    private void OnDisable()
+    {
+        TieInfo.WinAction -= Win;
+        TieInfo.LoseAction -= Lose;
+    }
+
     public void SetLanguageRu()
     {
         nextButton.gameObject.GetComponent<Image>().sprite = nextButtonRU;
@@ -49,6 +62,7 @@ public class LevelManager : MonoBehaviour
     
     public void Win()
     {
+        Debug.Log("Csss");
         background.SetActive(true);
         nextButton.gameObject.SetActive(true);
         success.gameObject.SetActive(true);

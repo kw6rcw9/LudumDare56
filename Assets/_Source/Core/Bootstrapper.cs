@@ -8,7 +8,7 @@ namespace Core
     {
         [SerializeField] private Player player;
         private Movement _movement;
-        private void Awake()
+        private void Start()
         {
             _movement = new Movement(player);
             

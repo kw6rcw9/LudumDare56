@@ -39,7 +39,7 @@ namespace _Source.Settings
             AwakeSoundUI();
             musicSource.Play();
         }
-
+        
         private void SetLangRu()
         {
             SetLanguageRu?.Invoke();

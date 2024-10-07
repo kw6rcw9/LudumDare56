@@ -21,9 +21,11 @@
         private Queue<Transform> _tilesQueue;
         private Queue<Transform> _lightedPath;
         private List<Transform> _fullPath;
+        public static Queue<Transform> CorrectPath;
 
-        private void Start()
+        private void Awake()
         {
+          CorrectPath = new Queue<Transform>();
           _tilesQueue = new Queue<Transform>();
           _lightedPath = new Queue<Transform>();
           _fullPath = new List<Transform>();
@@ -183,6 +185,7 @@ Debug.Log(rand);
           currentTile = matrix[i, k - 1];
           currentTile.GetComponent<TieInfo>().IsNeeded = true;
           _lightedPath.Enqueue(currentTile);
+          CorrectPath.Enqueue(currentTile);
 
           //matrix[i, k - 1].GetComponent<SpriteRenderer>().color = pathFinder; // помечаем ячейку
           k -= 1;
@@ -199,6 +202,7 @@ Debug.Log(rand);
           currentTile = matrix[i, k + 1];
           currentTile.GetComponent<TieInfo>().IsNeeded = true;
           _lightedPath.Enqueue(currentTile);
+          CorrectPath.Enqueue(currentTile);
 
           //matrix[i, k + 1].GetComponent<SpriteRenderer>().color = pathFinder; // помечаем ячейку
           k += 1;
@@ -215,6 +219,7 @@ Debug.Log(rand);
           currentTile = matrix[i + 1, k];
           currentTile.GetComponent<TieInfo>().IsNeeded = true;
           _lightedPath.Enqueue(currentTile);
+          CorrectPath.Enqueue(currentTile);
 
           //matrix[i + 1, k].GetComponent<SpriteRenderer>().color = pathFinder; // помечаем ячейку
           i += 1;
