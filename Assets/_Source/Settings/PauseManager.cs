@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
@@ -8,6 +10,9 @@ namespace _Source.Settings
 {
     public class PauseManager : MonoBehaviour
     {
+        public static Action SetLanguageRu;
+        public static Action SetLanguageEn;
+        
         public Button pauseButton;
         public Button continueButton;
         public GameObject menuObject;
@@ -37,11 +42,13 @@ namespace _Source.Settings
 
         private void SetLangRu()
         {
+            SetLanguageRu?.Invoke();
             PlayerPrefs.SetInt("Lang", 1);
             Debug.Log("SetLangRu worked out");
         }
         private void SetLangEn()
         {
+            SetLanguageEn?.Invoke();
             PlayerPrefs.SetInt("Lang", 0);
             Debug.Log("SetLangEn worked out");
         }
