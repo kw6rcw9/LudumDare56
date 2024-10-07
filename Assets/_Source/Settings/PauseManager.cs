@@ -32,6 +32,7 @@ namespace _Source.Settings
         public Sprite soundButtonSprite;
         public Sprite soundButtonOffSprite;
         public AudioSource musicSource;
+        public AudioSource SFXSource;
         public GameObject settingsPannel;
         public Sprite settingsPannelRu;
         public Sprite settingsPannelEn;
@@ -76,12 +77,14 @@ namespace _Source.Settings
         
         private void SetLangRu()
         {
+            SFXSource.Play();
             SetLanguageRu?.Invoke();
             PlayerPrefs.SetInt("Lang", 1);
             Debug.Log("SetLangRu worked out");
         }
         private void SetLangEn()
         {
+            SFXSource.Play();
             SetLanguageEn?.Invoke();
             PlayerPrefs.SetInt("Lang", 0);
             Debug.Log("SetLangEn worked out");
@@ -89,12 +92,14 @@ namespace _Source.Settings
 
         private void SetPauseOn()
         {
+            SFXSource.Play();
             pauseButton.gameObject.SetActive(false);
             menuObject.gameObject.SetActive(true);
             Debug.Log("SetPauseOn worked out");
         }
         private void SetPauseOff()
         {
+            SFXSource.Play();
             menuObject.gameObject.SetActive(false);
             pauseButton.gameObject.SetActive(true);
             Debug.Log("SetPauseOff worked out");
@@ -102,6 +107,7 @@ namespace _Source.Settings
 
         private void SoundOff()
         {
+            SFXSource.Play();
             audioMixer.SetFloat("Sound", -80f);
             PlayerPrefs.SetInt("IsSound", 1);
             PlayerPrefs.Save();
@@ -113,6 +119,7 @@ namespace _Source.Settings
 
         private void SoundOn()
         {
+            SFXSource.Play();
             audioMixer.SetFloat("Sound", soundSlider.value);
             PlayerPrefs.SetInt("IsSound", 0);
             PlayerPrefs.Save();
@@ -148,6 +155,7 @@ namespace _Source.Settings
         
         private void ChangeSound(float value)
         {
+            SFXSource.Play();
             audioMixer.SetFloat("Sound", value);
             PlayerPrefs.SetFloat("Sound", value);
             if (PlayerPrefs.GetInt("IsSound") == 1) {
@@ -159,6 +167,7 @@ namespace _Source.Settings
         
         public void ChangeMusic(float value)
         {
+            SFXSource.Play();
             audioMixer.SetFloat("Music", value);
             PlayerPrefs.SetFloat("Music", value);
             if (PlayerPrefs.GetInt("IsMusic") == 1) {
@@ -192,6 +201,7 @@ namespace _Source.Settings
         
         private void MusicOff()
         {
+            SFXSource.Play();
             audioMixer.SetFloat("Music", -80f);
             PlayerPrefs.SetInt("IsMusic", 1);
             PlayerPrefs.Save();
@@ -202,6 +212,7 @@ namespace _Source.Settings
         }
         private void MusicOn()
         {
+            SFXSource.Play();
             audioMixer.SetFloat("Music", musicSlider.value);
             PlayerPrefs.SetInt("IsMusic", 0);
             PlayerPrefs.Save();

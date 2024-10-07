@@ -9,8 +9,16 @@ namespace Core.PlayerController
     public class Movement
     {
         private Player _player;
+
+
+        [SerializeField] private AudioSource AudioSource;
+        [SerializeField] private AudioClip MoveSound;
+
+        public Movement(Player player)
+
         private Timer _timer;
         public Movement(Player player, Timer timer)
+
         {
             _player = player;
             _timer = timer;

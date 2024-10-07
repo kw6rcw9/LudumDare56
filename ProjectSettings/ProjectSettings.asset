@@ -647,6 +647,7 @@ PlayerSettings:
   webGLMemoryGeometricGrowthCap: 96
   webGLPowerPreference: 2
   scriptingDefineSymbols:
+
     Android: UNITY_POST_PROCESSING_STACK_V2;DOTWEEN
     EmbeddedLinux: UNITY_POST_PROCESSING_STACK_V2;DOTWEEN
     GameCoreScarlett: DOTWEEN
@@ -664,6 +665,7 @@ PlayerSettings:
     XboxOne: UNITY_POST_PROCESSING_STACK_V2;DOTWEEN
     iPhone: DOTWEEN
     tvOS: UNITY_POST_PROCESSING_STACK_V2;DOTWEEN
+
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}

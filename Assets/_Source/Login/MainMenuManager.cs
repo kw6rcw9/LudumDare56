@@ -18,6 +18,8 @@ public class MainMenuManager : MonoBehaviour
     public GameObject Leaderboard;
     public Button LeaderboardButton;
     public Button LeaderboardCloseButton;
+
+    [SerializeField] private AudioSource audioSourceSFX;
     
     public void SetLanguageRu()
     {
@@ -45,6 +47,7 @@ public class MainMenuManager : MonoBehaviour
 
     private void normalVoid()
     {
+        audioSourceSFX.Play();
         StopHandling();
         SceneManager.LoadScene("Level 1");
         Debug.Log("normalVoid");
@@ -53,6 +56,7 @@ public class MainMenuManager : MonoBehaviour
 
     private void arcadeVoid()
     {
+        audioSourceSFX.Play();
         StopHandling();
         Debug.Log("arcadeVoid");
     }
@@ -60,15 +64,18 @@ public class MainMenuManager : MonoBehaviour
 
     private void settingsVoid()
     {
+        audioSourceSFX.Play();
         Debug.Log("settingsVoid");
     }
 
     private void openLeaderboard()
     {
+        audioSourceSFX.Play();
         Leaderboard.SetActive(true);
     }
     private void closeLeaderboard()
     {
+        audioSourceSFX.Play();
         Leaderboard.SetActive(false);
     }
     
