@@ -16,8 +16,8 @@
         [SerializeField] private float pathEndDelay;
         [SerializeField] private Vector2 boardSize;
         [SerializeField] private List<Transform> tiles;
-        [SerializeField] private Color pathFinder;
-        [SerializeField] private Color defaultCol;
+        [SerializeField] private Sprite pathFinder;
+        [SerializeField] private Sprite defaultCol;
         private Queue<Transform> _tilesQueue;
         private Queue<Transform> _lightedPath;
         private List<Transform> _fullPath;
@@ -47,7 +47,7 @@
           {
             yield return new WaitForSeconds(pathLightingDelay);
             var tile = _lightedPath.Dequeue();
-            tile.GetComponent<SpriteRenderer>().color = pathFinder;
+            tile.GetComponent<SpriteRenderer>().sprite = pathFinder;
             _fullPath.Add(tile);
             
           }
@@ -58,7 +58,7 @@
           yield return new WaitForSeconds(pathEndDelay);
           foreach (var tile in _fullPath)
           {
-            tile.GetComponent<SpriteRenderer>().color = defaultCol;
+            tile.GetComponent<SpriteRenderer>().sprite = defaultCol;
           }
         }
 
@@ -126,7 +126,7 @@ public Transform[,] GeneratePath(Transform[,] matrix, int[] size)
   int k = size[1] / 2; // начальная колонка (центральная)
 
   // Помечаем начальную позицию
-  matrix[i, k].GetComponent<SpriteRenderer>().color = pathFinder;
+  matrix[i, k].GetComponent<SpriteRenderer>().sprite = pathFinder;
   _fullPath.Add(  matrix[i, k]);
   matrix[i, k].GetComponent<TieInfo>().IsNeeded = true;
 
