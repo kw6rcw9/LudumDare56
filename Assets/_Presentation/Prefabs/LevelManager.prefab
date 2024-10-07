@@ -341,6 +341,31 @@ MonoBehaviour:
   success: {fileID: 7341466475798894248}
   successEN: {fileID: 21300000, guid: d8bced4b78314c94e9d2fae4bb1e7062, type: 3}
   successRU: {fileID: 21300000, guid: eaec1ac4050a1144a95e2649db7d3a39, type: 3}
+  beautifulText: {fileID: 0}
+  voiceLineIntro: {fileID: 185759204094471779, guid: 3c63e4f318a95914fa3c42127e2ea7a2, type: 3}
+  voiceLinesWellDone:
+  - {fileID: 185759204094471779, guid: 06973fb78cb933549b0dcafd08b2d917, type: 3}
+  - {fileID: 185759204094471779, guid: f7458df2cfea7864fb2cfcf56f780df5, type: 3}
+  - {fileID: 185759204094471779, guid: d7274cb1bf0933c4194f16699ffcbf9f, type: 3}
+  - {fileID: 185759204094471779, guid: b59d178303bb0c64abe308c845e61308, type: 3}
+  - {fileID: 185759204094471779, guid: 0b90ef9abf56df5498f4abec73751989, type: 3}
+  voiceLinesRandom:
+  - {fileID: 185759204094471779, guid: ed01122940c4dd147ba926f3c05fd449, type: 3}
+  - {fileID: 185759204094471779, guid: 9ecc2353c8400c8499aa22e00c739f73, type: 3}
+  - {fileID: 185759204094471779, guid: 09ec446bb6f136040bb1d6018a9dedab, type: 3}
+  - {fileID: 185759204094471779, guid: 7d7e25b9b9999c84298d659b0ba968e4, type: 3}
+  - {fileID: 185759204094471779, guid: 2df7f3efb3f01c640ab3d484bf4c58bf, type: 3}
+  - {fileID: 185759204094471779, guid: 6c91848fb646f424f881c2a09a0a81ae, type: 3}
+  - {fileID: 185759204094471779, guid: a771ef53c1425924f9b51b66139bc42b, type: 3}
+  - {fileID: 185759204094471779, guid: 09b65b0b31f0d5944ac0ef5f42640fe9, type: 3}
+  - {fileID: 185759204094471779, guid: 526f60d323cbefa4dbc9184ad4623eb8, type: 3}
+  - {fileID: 185759204094471779, guid: 8b1fb7408a26c054d8f56d4a95f799d1, type: 3}
+  - {fileID: 185759204094471779, guid: e20f0bb75d58f8446bbb45ee69dde20b, type: 3}
+  - {fileID: 185759204094471779, guid: 3c1d55d62fe25f64fa863cd9881d50a0, type: 3}
+  - {fileID: 185759204094471779, guid: 4ff250d1375a2774eb0789b54e190815, type: 3}
+  - {fileID: 185759204094471779, guid: a54e927c1504a3e4dbd132866fb79873, type: 3}
+  - {fileID: 185759204094471779, guid: 1da850997f8f76142abda8edc9729cc9, type: 3}
+  - {fileID: 185759204094471779, guid: 7dae4fc260ab68848ba8d1757ee4c6f7, type: 3}
 --- !u!1 &5102770329684402811
 GameObject:
   m_ObjectHideFlags: 0

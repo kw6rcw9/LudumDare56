@@ -16,6 +16,22 @@ namespace _Source.BeautifulText
 
         private string currentText;
 
+        public void NewMessageWithVL(VoiceLine voiceLine)
+        {
+            string text;
+            AudioClip clip;
+            if (PlayerPrefs.GetInt("Lang") == 0)
+            {
+                text = voiceLine.textLineEn;
+                clip = voiceLine.voiceLineEn;
+            } else
+            {
+                text = voiceLine.textLineRu;
+                clip = voiceLine.voiceLineRu;
+            }
+            
+            NewMessage(text, clip, voiceLine.emotions);
+        }
         
         private void OnEnable()
         {
@@ -32,6 +48,7 @@ namespace _Source.BeautifulText
         private IEnumerator ShowText(string text, string emotions)
         {
             wrapper.SetActive(true);
+            text += "                         ";
             string[] splittedText = text.Split("&");
             for (int j = 0; j < splittedText.Length; j++)
             {
@@ -50,9 +67,6 @@ namespace _Source.BeautifulText
                     yield return new WaitForSeconds(typingSpeed);
                 } 
             }
-            
-            yield return new WaitForSeconds(2);
-            wrapper.SetActive(false);
         }
     }
 }

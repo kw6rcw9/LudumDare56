@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using _Source.BeautifulText;
 using Core.MapSystem.Data;
 using TMPro;
 using Unity.VisualScripting;
@@ -27,7 +28,11 @@ public class LevelManager : MonoBehaviour
     public Image success;
     public Sprite successEN;
     public Sprite successRU;
-    
+    public BeautifulText beautifulText;
+    public VoiceLine voiceLineIntro;
+    public VoiceLine[] voiceLinesWellDone;
+    public VoiceLine[] voiceLinesRandom;
+
     private float startedAt;
 
     private void OnEnable()
@@ -59,15 +64,16 @@ public class LevelManager : MonoBehaviour
         failure.sprite = failureEN;
         success.sprite = successEN;
     }
-    
+
     public void Win()
     {
-        Debug.Log("Csss");
+        beautifulText.NewMessageWithVL(voiceLinesWellDone[new System.Random().Next(voiceLinesWellDone.Length)]);
         background.SetActive(true);
         nextButton.gameObject.SetActive(true);
         success.gameObject.SetActive(true);
         timeTextTime.text = getDurationText();
     }
+
     public void Lose()
     {
         background.SetActive(true);
@@ -100,7 +106,7 @@ public class LevelManager : MonoBehaviour
         LanguageManager.SetLanguageEnAction += SetLanguageEn;
         LanguageManager.SetLanguageRuAction += SetLanguageRu;
     }
-    
+
     public void Dispose()
     {
         LanguageManager.SetLanguageEnAction -= SetLanguageEn;
@@ -112,5 +118,14 @@ public class LevelManager : MonoBehaviour
         startedAt = Time.time;
         nextButton.onClick.AddListener(NextScene);
         restartButton.onClick.AddListener(RestartScene);
+        if (!PlayerPrefs.HasKey("StartMessage"))
+        {
+            beautifulText.NewMessageWithVL(voiceLineIntro);
+            PlayerPrefs.SetInt("StartMessage", 0);
+        }
+        else
+        {
+            beautifulText.NewMessageWithVL(voiceLinesRandom[new System.Random().Next(voiceLinesRandom.Length)]);
+        }
     }
 }
