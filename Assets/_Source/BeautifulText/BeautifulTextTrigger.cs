@@ -1,15 +1,18 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using _Source.BeautifulText;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class BeautifulTextTrigger : MonoBehaviour
 {
-    public AudioClip audioClip;
     public float retryDelay = 10;
-    public string text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
-    public static Action<string, AudioClip> beautifulSpeacAction;
+    private AudioClip audioClip;
+    private string text = "";
+    public static Action<string, AudioClip, string> beautifulSpeacAction;
+
+    public VoiceLine voiceLine;
 
     void Start()
     {
@@ -21,7 +24,16 @@ public class BeautifulTextTrigger : MonoBehaviour
         while (true)
         {
             Debug.Log("Invoking beautifulSpeacAction");
-            beautifulSpeacAction?.Invoke(text, audioClip);
+            if (PlayerPrefs.GetInt("Lang") == 0)
+            {
+                text = voiceLine.textLineEn;
+                audioClip = voiceLine.voiceLineEn;
+            } else
+            {
+                text = voiceLine.textLineRu;
+                audioClip = voiceLine.voiceLineRu;
+            }
+            beautifulSpeacAction?.Invoke(text, audioClip, voiceLine.emotions);
             yield return new WaitForSeconds(retryDelay);
         }
     }
