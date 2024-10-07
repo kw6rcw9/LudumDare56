@@ -1,6 +1,7 @@
 using System;
 using _Source.Settings;
 using Core.PlayerController;
+using Core.TimerSystem;
 using UnityEngine;
 
 namespace Core
@@ -11,12 +12,13 @@ namespace Core
         [SerializeField] private PauseManager pauseManager;
         [SerializeField] private LanguageManager languageManager;
         [SerializeField] private LevelManager levelManager;
+        [SerializeField] private Timer timer;
         private Movement _movement;
-        private void Start()
+        private void Awake()
         {
             if (player != null)
             {
-                _movement = new Movement(player);
+                _movement = new Movement(player, timer);
             }
         }
 
