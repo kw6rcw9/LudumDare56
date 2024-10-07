@@ -9,7 +9,19 @@ public class LanguageManager : MonoBehaviour
 {
     public static Action SetLanguageRuAction;
     public static Action SetLanguageEnAction;
+
+    public void Dispose()
+    {
+        PauseManager.SetLanguageRu -= SetLanguageRU;
+        PauseManager.SetLanguageEn -= SetLanguageEN;
+    }
     
+    private void Awake()
+    {
+        PauseManager.SetLanguageRu += SetLanguageRU;
+        PauseManager.SetLanguageEn += SetLanguageEN;
+    }
+
     private void Start()
     {
         if (!PlayerPrefs.HasKey("Lang"))
@@ -23,9 +35,6 @@ public class LanguageManager : MonoBehaviour
         {
             SetLanguageRuAction?.Invoke();
         }
-
-        PauseManager.SetLanguageRu += SetLanguageRU;
-        PauseManager.SetLanguageEn += SetLanguageEN;
     }
 
     private void SetLanguageRU()

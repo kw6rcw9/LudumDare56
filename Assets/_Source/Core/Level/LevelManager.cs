@@ -64,11 +64,13 @@ public class LevelManager : MonoBehaviour
 
     public void NextScene()
     {
+        Debug.Log("NextScene");
         SceneManager.LoadScene(nextSceneName);
     }
 
     public void RestartScene()
     {
+        Debug.Log("RestartScene");
         SceneManager.LoadScene("Main Menu");
     }
 
@@ -78,13 +80,23 @@ public class LevelManager : MonoBehaviour
         string durationText = $"{duration / 60:00}:{duration % 60:00}";
         return durationText;
     }
-    
+
     private void Awake()
+    {
+        LanguageManager.SetLanguageEnAction += SetLanguageEn;
+        LanguageManager.SetLanguageRuAction += SetLanguageRu;
+    }
+    
+    public void Dispose()
+    {
+        LanguageManager.SetLanguageEnAction -= SetLanguageEn;
+        LanguageManager.SetLanguageRuAction -= SetLanguageRu;
+    }
+
+    private void Start()
     {
         startedAt = Time.time;
         nextButton.onClick.AddListener(NextScene);
         restartButton.onClick.AddListener(RestartScene);
-        LanguageManager.SetLanguageEnAction += SetLanguageEn;
-        LanguageManager.SetLanguageRuAction += SetLanguageRu;
     }
 }

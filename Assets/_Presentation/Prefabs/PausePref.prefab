@@ -369,7 +369,7 @@ MonoBehaviour:
   pauseButton: {fileID: 6271676193771575396}
   continueButton: {fileID: 8012454617726686072}
   continueButtonRu: {fileID: -1061411956, guid: db47001a72ea4ed459a73f2478e0255e, type: 3}
-  continueButtonEn: {fileID: -1061411956, guid: db47001a72ea4ed459a73f2478e0255e, type: 3}
+  continueButtonEn: {fileID: 125981609, guid: 570ced82420dbed498e4376b92af804f, type: 3}
   menuObject: {fileID: 7623308207308120309}
   langRuButton: {fileID: 5763402340534581334}
   langEnButton: {fileID: 9107663964313877401}
