@@ -9,6 +9,7 @@ namespace _Source.Login
     public class Login : MonoBehaviour
     {
         public TMP_Text inputContent;
+        [SerializeField] private AudioSource audioSourceSFX;
 
         private void Awake()
         {
@@ -20,6 +21,7 @@ namespace _Source.Login
         }
         
         public void Register() {
+            audioSourceSFX.Play();
             PlayerPrefs.SetString("UserName", inputContent.text);
             PlayerPrefs.Save();
             Debug.Log("Saved user name: " + PlayerPrefs.GetString("UserName"));

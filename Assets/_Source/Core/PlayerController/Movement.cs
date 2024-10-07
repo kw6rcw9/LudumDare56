@@ -11,14 +11,14 @@ namespace Core.PlayerController
         private Player _player;
 
 
-        [SerializeField] private AudioSource AudioSource;
-        [SerializeField] private AudioClip MoveSound;
+        private AudioSource _audioSourceSFX;
         
 
         private Timer _timer;
-        public Movement(Player player, Timer timer)
+        public Movement(Player player, Timer timer, AudioSource audioSourceSFX)
 
         {
+            _audioSourceSFX = audioSourceSFX;
             _player = player;
             _timer = timer;
             Direction.movementAction += Move;
@@ -26,6 +26,7 @@ namespace Core.PlayerController
 
         void Move(int dir)
         {
+            _audioSourceSFX.Play();
             _timer.StopTimer();
             switch (dir)
             {
