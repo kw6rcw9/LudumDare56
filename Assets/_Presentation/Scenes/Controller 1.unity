@@ -364,6 +364,9 @@ MonoBehaviour:
   startTime: 15
   timeLeft: 15
   actionsAfterSeconds: 0
+  audioSource: {fileID: 0}
+  electricUpSFX: {fileID: 0}
+  electricShockSFX: {fileID: 0}
 --- !u!4 &276138854
 Transform:
   m_ObjectHideFlags: 0

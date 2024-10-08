@@ -13,12 +13,13 @@ namespace Core
         [SerializeField] private LanguageManager languageManager;
         [SerializeField] private LevelManager levelManager;
         [SerializeField] private Timer timer;
+        [SerializeField] private AudioSource audioSourceSFX;
         private Movement _movement;
         private void Awake()
         {
             if (player != null)
             {
-                _movement = new Movement(player, timer);
+                _movement = new Movement(player, timer, audioSourceSFX);
             }
         }
 

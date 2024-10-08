@@ -10,6 +10,10 @@ namespace Core.MapSystem.Data
         [SerializeField] private Sprite loseColor;
         [SerializeField] private Sprite rightColor;
         [SerializeField] private Sprite firstTile;
+        [SerializeField] private AudioSource audioSource;
+        [SerializeField] private AudioClip correctSFX;
+        [SerializeField] private AudioClip incorrectSFX;
+        [SerializeField] private AudioClip winSFX;
         
         private bool _errorMove;
         public static Action LoseAction;
@@ -36,6 +40,8 @@ namespace Core.MapSystem.Data
             }
             else if(IsNeeded && PathGenerator.CorrectPath.Peek() == transform)
             {
+                audioSource.clip = correctSFX;
+                audioSource.Play();
                 PathGenerator.CorrectPath.Dequeue();
                 transform.GetComponent<SpriteRenderer>().sprite = rightColor;
                 if (!PathGenerator.CorrectPath.TryPeek(out Transform res))
@@ -57,6 +63,8 @@ namespace Core.MapSystem.Data
 
         void Lose()
         {
+            audioSource.clip = incorrectSFX;
+            audioSource.Play();
             transform.GetComponent<SpriteRenderer>().sprite = loseColor;
             Debug.Log("Lose");
             LoseAction?.Invoke();
@@ -64,6 +72,8 @@ namespace Core.MapSystem.Data
 
         void Win()
         {
+            audioSource.clip = winSFX;
+            audioSource.Play();
             Debug.Log("Win");
             WinAction?.Invoke();
         }

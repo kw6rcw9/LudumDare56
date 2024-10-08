@@ -11,8 +11,12 @@ namespace Core.TimerSystem
         private int startTime;
         [SerializeField] private int timeLeft;
         [SerializeField] private int actionsAfterSeconds;
+        [SerializeField] private AudioSource audioSource;
+        [SerializeField] private AudioClip electricUpSFX;
+        [SerializeField] private AudioClip electricShockSFX;
         private bool isRunnning = true;
         private bool _runActionsCoroutine;
+        private bool electricIsRunning = false;
 
         
         public void SetTimer()
@@ -63,7 +67,10 @@ namespace Core.TimerSystem
         {
             isRunnning = false;
             Debug.Log("Таймер закончился!");
-           animator.Play("Electic Shock");
+            audioSource.Stop();
+            audioSource.clip = electricShockSFX;
+            audioSource.Play();
+            animator.Play("Electic Shock");
         }
 
         public void Action()
@@ -83,6 +90,12 @@ namespace Core.TimerSystem
                     actionDelay = 0;
                     Action();
                 }
+                if(!electricIsRunning && timeLeft >= 10){
+                    electricIsRunning = true;
+                    audioSource.clip = electricUpSFX;
+                    audioSource.Play();
+                }
+
                 yield return new WaitForSeconds(1);
                 
             }
