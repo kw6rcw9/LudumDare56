@@ -150,12 +150,18 @@ public class LevelManager : MonoBehaviour
         restartButton.onClick.AddListener(RestartScene);
         if (!PlayerPrefs.HasKey("StartMessage"))
         {
-            beautifulText.NewMessageWithVL(voiceLineIntro);
+            StartCoroutine(NewMessageWithVLAfterDelay(voiceLineIntro, 3));
             PlayerPrefs.SetInt("StartMessage", 0);
         }
         else
         {
-            beautifulText.NewMessageWithVL(voiceLinesRandom[new System.Random().Next(voiceLinesRandom.Length)]);
+            StartCoroutine(NewMessageWithVLAfterDelay(voiceLinesRandom[new System.Random().Next(voiceLinesRandom.Length)], 3));
         }
+    }
+    
+    private IEnumerator NewMessageWithVLAfterDelay(VoiceLine vl, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        beautifulText.NewMessageWithVL(vl);
     }
 }
