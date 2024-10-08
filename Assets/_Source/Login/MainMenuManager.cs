@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Core;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -40,16 +42,16 @@ public class MainMenuManager : MonoBehaviour
         Normal.gameObject.GetComponent<Image>().sprite = NormalEN;
     }
 
-    private void StopHandling()
+    private void Dispose()
     {
         LanguageManager.SetLanguageEnAction -= SetLanguageEn;
         LanguageManager.SetLanguageRuAction -= SetLanguageRu;
+        Bootstrapper.DisposeAction -= Dispose;
     }
 
     private void normalVoid()
     {
         audioSourceSFX.Play();
-        StopHandling();
         SceneManager.LoadScene("Level 1");
         Debug.Log("normalVoid");
     }
@@ -63,9 +65,7 @@ public class MainMenuManager : MonoBehaviour
             return;
         }
         audioSourceSFX.Play();
-        StopHandling();
     }
-
 
     private void settingsVoid()
     {
@@ -83,16 +83,21 @@ public class MainMenuManager : MonoBehaviour
         audioSourceSFX.Play();
         Leaderboard.SetActive(false);
     }
-    
+
     private void Awake()
+    {
+        LanguageManager.SetLanguageEnAction += SetLanguageEn;
+        LanguageManager.SetLanguageRuAction += SetLanguageRu;
+        Bootstrapper.DisposeAction += Dispose;
+    }
+
+    public void Start()
     {
         Normal.onClick.AddListener(normalVoid);
         Arcade.onClick.AddListener(arcadeVoid);
         Settings.onClick.AddListener(settingsVoid);
         LeaderboardButton.onClick.AddListener(openLeaderboard);
         LeaderboardCloseButton.onClick.AddListener(closeLeaderboard);
-        LanguageManager.SetLanguageEnAction += SetLanguageEn;
-        LanguageManager.SetLanguageRuAction += SetLanguageRu;
         if (PlayerPrefs.HasKey("ArcadeAvailable"))
         {
             ArcadeLock.SetActive(false);
