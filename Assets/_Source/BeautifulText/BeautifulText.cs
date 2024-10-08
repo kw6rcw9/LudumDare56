@@ -70,7 +70,7 @@ namespace _Source.BeautifulText
         private IEnumerator ShowText(string text, string emotions, float typingSpeed)
         {
             DOFadeWithChildreb(wrapper, 0.9f, 2);
-            text += "                  ";
+            text += "                           ";
             string[] splittedText = text.Split("&");
             int j;
             int i = 1;
@@ -94,7 +94,7 @@ namespace _Source.BeautifulText
 
             if (j == splittedText.Length && text.Length < i)
             {
-                DOFadeWithChildreb(wrapper, 0f, 3);
+                DOFadeWithChildreb(wrapper, 0f, 1);
             }
         }
     }

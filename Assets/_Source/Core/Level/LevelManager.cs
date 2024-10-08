@@ -50,12 +50,6 @@ public class LevelManager : MonoBehaviour
         Timer.LoseAction += Lose;
     }
 
-    private void OnDisable()
-    {
-
-
-    }
-
     public void SetLanguageRu()
     {
         nextButton.gameObject.GetComponent<Image>().sprite = nextButtonRU;
@@ -80,7 +74,7 @@ public class LevelManager : MonoBehaviour
         Movement.EnableMovement = false;
         beautifulText.NewMessageWithVL(voiceLinesWellDone[new System.Random().Next(voiceLinesWellDone.Length)]);
 
-        fadein.DOFade(0.1f, 1).OnComplete(delegate {fadein.DOFade(0.5f, 5f);});
+        fadein.DOFade(0.5f, 3f);
 
         background.SetActive(true);
 
@@ -96,7 +90,7 @@ public class LevelManager : MonoBehaviour
 
         Movement.EnableMovement = false;
 
-        fadein.DOFade(0.8f, 1).OnComplete(delegate {fadein.DOFade(0.05f, 3f);});
+        fadein.DOFade(0.5f, 3f);
 
         background.SetActive(true);
         
