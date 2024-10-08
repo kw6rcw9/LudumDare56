@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using _Source.Settings;
+using Core;
 using UnityEngine;
 using UnityEngine.Android;
 
@@ -14,10 +15,12 @@ public class LanguageManager : MonoBehaviour
     {
         PauseManager.SetLanguageRu -= SetLanguageRU;
         PauseManager.SetLanguageEn -= SetLanguageEN;
+        Bootstrapper.DisposeAction -= Dispose;
     }
     
     private void Awake()
     {
+        Bootstrapper.DisposeAction += Dispose;
         PauseManager.SetLanguageRu += SetLanguageRU;
         PauseManager.SetLanguageEn += SetLanguageEN;
     }

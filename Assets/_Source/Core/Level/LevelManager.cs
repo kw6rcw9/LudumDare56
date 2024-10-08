@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using _Source.BeautifulText;
+using Core;
 using Core.MapSystem.Data;
 using TMPro;
 using Unity.VisualScripting;
@@ -45,8 +46,6 @@ public class LevelManager : MonoBehaviour
 
     private void OnDisable()
     {
-        TieInfo.WinAction -= Win;
-        TieInfo.LoseAction -= Lose;
     }
 
     public void SetLanguageRu()
@@ -111,14 +110,20 @@ public class LevelManager : MonoBehaviour
 
     private void Awake()
     {
+        TieInfo.WinAction += Win;
+        TieInfo.LoseAction += Lose;
         LanguageManager.SetLanguageEnAction += SetLanguageEn;
         LanguageManager.SetLanguageRuAction += SetLanguageRu;
+        Bootstrapper.DisposeAction += Dispose;
     }
 
     public void Dispose()
     {
+        TieInfo.WinAction -= Win;
+        TieInfo.LoseAction -= Lose;
         LanguageManager.SetLanguageEnAction -= SetLanguageEn;
         LanguageManager.SetLanguageRuAction -= SetLanguageRu;
+        Bootstrapper.DisposeAction += Dispose;
     }
 
     private void Start()

@@ -9,13 +9,11 @@ namespace Core
     public class Bootstrapper : MonoBehaviour
     {
         [SerializeField] private Player player;
-        [SerializeField] private PauseManager pauseManager;
-        [SerializeField] private LanguageManager languageManager;
-        [SerializeField] private LevelManager levelManager;
         [SerializeField] private Timer timer;
         [SerializeField] private AudioSource audioSourceSFX;
         [SerializeField] private MoveInput moveInput;
         private Movement _movement;
+        public static Action DisposeAction;
         private void Start()
         {
             if (player != null)
@@ -27,11 +25,9 @@ namespace Core
 
         private void OnDisable()
         {
+            DisposeAction?.Invoke();
             Debug.Log("Botstrapper: Dispose all.");
             _movement?.Dispose();
-            pauseManager?.Dispose();
-            languageManager?.Dispose();
-            levelManager?.Dispose();
         }
     }
 }
