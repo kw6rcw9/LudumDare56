@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -47,10 +49,28 @@ namespace _Source.BeautifulText
             StartCoroutine(ShowText(text, emotions, typingSpeed));
         }
 
+        private void DOFadeWithChildreb(GameObject gameObject, float fade, float time)
+        {
+            gameObject.GetComponent<Image>()?.DOFade(fade, time);
+            foreach (Image child in gameObject.GetComponentsInChildren<Image>())
+            {
+                child.DOFade(fade, time);
+            }
+            foreach (TMP_Text child in gameObject.GetComponentsInChildren<TMP_Text>())
+            {
+                child.DOFade(fade, time);
+            }
+        }
+
+        private void Start()
+        {
+            DOFadeWithChildreb(wrapper, 0, 0);
+        }
+
         private IEnumerator ShowText(string text, string emotions, float typingSpeed)
         {
-            wrapper.SetActive(true);
-            text += "                         ";
+            DOFadeWithChildreb(wrapper, 0.9f, 2);
+            text += "                  ";
             string[] splittedText = text.Split("&");
             int j;
             int i = 1;
@@ -74,7 +94,7 @@ namespace _Source.BeautifulText
 
             if (j == splittedText.Length && text.Length < i)
             {
-                wrapper.SetActive(false);
+                DOFadeWithChildreb(wrapper, 0f, 3);
             }
         }
     }

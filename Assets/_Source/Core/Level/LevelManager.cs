@@ -80,7 +80,7 @@ public class LevelManager : MonoBehaviour
         Movement.EnableMovement = false;
         beautifulText.NewMessageWithVL(voiceLinesWellDone[new System.Random().Next(voiceLinesWellDone.Length)]);
 
-        fadein.DOFade(0.8f, 1).OnComplete(delegate {fadein.DOFade(0.05f, 3f);});
+        fadein.DOFade(0.1f, 1).OnComplete(delegate {fadein.DOFade(0.5f, 5f);});
 
         background.SetActive(true);
 
@@ -150,12 +150,12 @@ public class LevelManager : MonoBehaviour
         restartButton.onClick.AddListener(RestartScene);
         if (!PlayerPrefs.HasKey("StartMessage"))
         {
-            StartCoroutine(NewMessageWithVLAfterDelay(voiceLineIntro, 3));
+            StartCoroutine(NewMessageWithVLAfterDelay(voiceLineIntro, 1.5f));
             PlayerPrefs.SetInt("StartMessage", 0);
         }
         else
         {
-            StartCoroutine(NewMessageWithVLAfterDelay(voiceLinesRandom[new System.Random().Next(voiceLinesRandom.Length)], 3));
+            StartCoroutine(NewMessageWithVLAfterDelay(voiceLinesRandom[new System.Random().Next(voiceLinesRandom.Length)], 1.5f));
         }
     }
     
