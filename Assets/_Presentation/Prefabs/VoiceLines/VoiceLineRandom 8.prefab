@@ -52,4 +52,6 @@ MonoBehaviour:
     \u043F\u0443\u0433\u0430\u0435\u0442\u2026"
   textLineEn: 'Should you decide to shout at the top of your lungs while in space,
     no one would hear you. Oh God. '
+  speedLineRu: 0.05
+  speedLineEn: 0.05
   emotions: 3

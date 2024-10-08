@@ -10,6 +10,8 @@ namespace _Source.BeautifulText
         public AudioClip voiceLineEn;
         public string textLineRu;
         public string textLineEn;
+        public float speedLineRu = 0.05f;
+        public float speedLineEn = 0.05f;
         public string emotions;
     }
 }

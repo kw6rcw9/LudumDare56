@@ -52,4 +52,6 @@ MonoBehaviour:
     \u043D\u0430 \u0417\u0435\u043C\u043B\u0435."
   textLineEn: Hmm. A single day on Venus is longer than a year on the Earth. Now
     where does it lead us..
+  speedLineRu: 0.05
+  speedLineEn: 0.05
   emotions: 2

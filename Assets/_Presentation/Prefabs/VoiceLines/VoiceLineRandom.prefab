@@ -52,4 +52,6 @@ MonoBehaviour:
     \u0435\u0441\u0442 \u0432\u0430\u0441."
   textLineEn: "It may sound strange, but while you\u2019re eating a pineapple, it\u2019s
     actually eating you in return"
+  speedLineRu: 0.05
+  speedLineEn: 0.05
   emotions: 3

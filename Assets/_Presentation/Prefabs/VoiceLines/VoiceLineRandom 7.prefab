@@ -52,4 +52,6 @@ MonoBehaviour:
     \u0447\u0435\u043C \u0445\u043E\u043B\u043E\u0434\u043D\u0430\u044F."
   textLineEn: "Still can\u2019t wrap my head around the fact that hot water freezes
     faster than cold water does"
+  speedLineRu: 0.05
+  speedLineEn: 0.05
   emotions: 3

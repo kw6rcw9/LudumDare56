@@ -52,4 +52,6 @@ MonoBehaviour:
     \u0431\u043E\u043B\u044C\u0448\u0435, \u0447\u0435\u043C \u0441\u044B\u0440."
   textLineEn: 'Fun fact: mice seem to like foods rich with sugar even more than they
     like cheese '
+  speedLineRu: 0.05
+  speedLineEn: 0.05
   emotions: 1

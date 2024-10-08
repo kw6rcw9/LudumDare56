@@ -51,4 +51,6 @@ MonoBehaviour:
     \u043D\u0430\u0441\u0435\u043A\u043E\u043C\u044B\u043C."
   textLineEn: "The first computer bug ever was\u2026 actually it was an actual bug,
     forget it.  "
+  speedLineRu: 0.05
+  speedLineEn: 0.05
   emotions: 4
