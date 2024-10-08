@@ -14,6 +14,8 @@ namespace Core.PlayerController
         public static bool EnableRightMovement = true;
         public static bool EnableLeftMovement = true;
         public static bool LastMoveUpDir = true;
+        private bool isTweeing;
+        
 
 
         private AudioSource _audioSourceSFX;
@@ -28,6 +30,7 @@ namespace Core.PlayerController
         public Movement(Player player, Timer timer, AudioSource audioSourceSFX)
 
         {
+            
             EnableMovement = false;
             _audioSourceSFX = audioSourceSFX;
             _player = player;
@@ -101,6 +104,7 @@ namespace Core.PlayerController
 
         public void MoveUp()
         {
+            
              
             if (!EnableMovement)
             {
@@ -122,6 +126,8 @@ namespace Core.PlayerController
 
         public void SetTimer()
         {
+            isTweeing = false;
+            Debug.Log("ОДИН ТВИН ЗАКОНЧИЛСЯ");
             _timer.SetTimer();
         }
         

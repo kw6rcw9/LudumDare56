@@ -13,6 +13,8 @@
     public class PathGenerator : MonoBehaviour
 
     {
+      [SerializeField] private float firstRoundDelay;
+        [SerializeField] private float roundDelay;
         [SerializeField] private float pathLightingDelay;
         [SerializeField] private float pathEndDelay;
         [SerializeField] private Vector2 boardSize;
@@ -27,7 +29,7 @@
         public static Queue<Transform> CorrectPath;
         public static int YBoardSize;
 
-        private void Start()
+        private IEnumerator Start()
         {
           YBoardSize = (int)boardSize.y;
           CorrectPath = new Queue<Transform>();
@@ -43,10 +45,20 @@
             tile.GetComponent<TieInfo>().NumInRow = i;
             _tilesQueue.Enqueue(tile);
           }
-         
+
+          if (!PlayerPrefs.HasKey("StartMessage"))
+          {
+            roundDelay = firstRoundDelay;
+          }
+          
+
+          yield return new WaitForSeconds(roundDelay);
           RandomGeneration();
           StartCoroutine(LightTheWay());
           StartCoroutine(ShowOffTheWay());
+          Debug.Log("Correct tiles: " + CorrectPath.Count);
+          Debug.Log(CorrectPath.Peek());
+
         }
 
         public void Construct(Movement movement)
