@@ -50,12 +50,14 @@ namespace _Source.BeautifulText
             wrapper.SetActive(true);
             text += "                         ";
             string[] splittedText = text.Split("&");
-            for (int j = 0; j < splittedText.Length; j++)
+            int j;
+            int i = 1;
+            for (j = 0; j < splittedText.Length; j++)
             {
                 profile.sprite = emotionList[emotions[j] - '0'];
                 text = splittedText[j];
                 currentText = "";
-                for (int i = 1; i <= text.Length; i++)
+                for (i = 1; i <= text.Length; i++)
                 {
                     if (currentText != text[..(i - 1)])
                     {
@@ -66,6 +68,11 @@ namespace _Source.BeautifulText
                     dialogueText.text = currentText;
                     yield return new WaitForSeconds(typingSpeed);
                 } 
+            }
+
+            if (j == splittedText.Length && text.Length < i)
+            {
+                wrapper.SetActive(false);
             }
         }
     }

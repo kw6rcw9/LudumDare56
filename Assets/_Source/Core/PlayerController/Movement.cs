@@ -34,10 +34,10 @@ namespace Core.PlayerController
 
         void Move(int dir)
         {
-            if (_disabeleMovement)
+            /*if (_disabeleMovement)
             {
                 return;
-            }
+            }*/
             
             _audioSourceSFX.Play();
             _timer.StopTimer();

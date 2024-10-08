@@ -27,6 +27,7 @@ namespace Core
 
         private void OnDisable()
         {
+            Debug.Log("Botstrapper: Dispose all.");
             _movement?.Dispose();
             pauseManager?.Dispose();
             languageManager?.Dispose();
