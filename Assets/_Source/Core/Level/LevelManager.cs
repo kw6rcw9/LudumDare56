@@ -123,9 +123,9 @@ public class LevelManager : MonoBehaviour
             beautifulText.NewMessageWithVL(voiceLineIntro);
             PlayerPrefs.SetInt("StartMessage", 0);
         }
-        else
-        {
-            beautifulText.NewMessageWithVL(voiceLinesRandom[new System.Random().Next(voiceLinesRandom.Length)]);
-        }
+        // else
+        // {
+        //     beautifulText.NewMessageWithVL(voiceLinesRandom[new System.Random().Next(voiceLinesRandom.Length)]);
+        // }
     }
 }
