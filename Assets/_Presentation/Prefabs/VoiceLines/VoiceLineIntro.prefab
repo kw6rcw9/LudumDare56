@@ -62,4 +62,6 @@ MonoBehaviour:
     it possible for a mouse, concerned with its safety, to suppress its instincts
     and trust a human?\u201D     &During the experiment you will need to correctly
     follow a prepared route.     "
+  speedLineRu: 0.05
+  speedLineEn: 0.05
   emotions: 121

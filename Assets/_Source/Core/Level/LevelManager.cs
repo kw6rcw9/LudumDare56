@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using _Source.BeautifulText;
+using Core;
 using Core.MapSystem.Data;
 using Core.PlayerController;
 using TMPro;
@@ -9,7 +10,11 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+
 using Timer = Core.TimerSystem.Timer;
+
+using DG.Tweening;
+
 
 public class LevelManager : MonoBehaviour
 {
@@ -34,6 +39,7 @@ public class LevelManager : MonoBehaviour
     public VoiceLine voiceLineIntro;
     public VoiceLine[] voiceLinesWellDone;
     public VoiceLine[] voiceLinesRandom;
+    public Image fadein;
 
     private float startedAt;
 
@@ -46,9 +52,7 @@ public class LevelManager : MonoBehaviour
 
     private void OnDisable()
     {
-        TieInfo.WinAction -= Win;
-        TieInfo.LoseAction -= Lose;
-        Timer.LoseAction -= Lose;
+
 
     }
 
@@ -72,9 +76,16 @@ public class LevelManager : MonoBehaviour
 
     public void Win()
     {
+
         Movement.EnableMovement = false;
         beautifulText.NewMessageWithVL(voiceLinesWellDone[new System.Random().Next(voiceLinesWellDone.Length)]);
+
+        fadein.DOFade(0.8f, 1).OnComplete(delegate {fadein.DOFade(0.05f, 3f);});
+
         background.SetActive(true);
+
+        beautifulText.NewMessageWithVL(voiceLinesWellDone[new System.Random().Next(voiceLinesWellDone.Length)]);
+
         nextButton.gameObject.SetActive(true);
         success.gameObject.SetActive(true);
         timeTextTime.text = getDurationText();
@@ -82,8 +93,14 @@ public class LevelManager : MonoBehaviour
 
     public void Lose()
     {
+
         Movement.EnableMovement = false;
+
+        fadein.DOFade(0.8f, 1).OnComplete(delegate {fadein.DOFade(0.05f, 3f);});
+
         background.SetActive(true);
+        
+
         restartButton.gameObject.SetActive(true);
         failure.gameObject.SetActive(true);
         timeTextTime.text = getDurationText();
@@ -110,14 +127,20 @@ public class LevelManager : MonoBehaviour
 
     private void Awake()
     {
+        TieInfo.WinAction += Win;
+        TieInfo.LoseAction += Lose;
         LanguageManager.SetLanguageEnAction += SetLanguageEn;
         LanguageManager.SetLanguageRuAction += SetLanguageRu;
+        Bootstrapper.DisposeAction += Dispose;
     }
 
     public void Dispose()
     {
+        TieInfo.WinAction -= Win;
+        TieInfo.LoseAction -= Lose;
         LanguageManager.SetLanguageEnAction -= SetLanguageEn;
         LanguageManager.SetLanguageRuAction -= SetLanguageRu;
+        Bootstrapper.DisposeAction += Dispose;
     }
 
     private void Start()
@@ -132,7 +155,7 @@ public class LevelManager : MonoBehaviour
         }
         else
         {
-             beautifulText.NewMessageWithVL(voiceLinesRandom[new System.Random().Next(voiceLinesRandom.Length)]);
+            beautifulText.NewMessageWithVL(voiceLinesRandom[new System.Random().Next(voiceLinesRandom.Length)]);
         }
     }
 }

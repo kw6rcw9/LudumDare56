@@ -52,4 +52,6 @@ MonoBehaviour:
     \u0417\u0435\u043C\u043B\u0435."
   textLineEn: "Space isn\u2019t the coldest place in the Universe, by the way. Earth
     is. "
+  speedLineRu: 0.05
+  speedLineEn: 0.05
   emotions: 0

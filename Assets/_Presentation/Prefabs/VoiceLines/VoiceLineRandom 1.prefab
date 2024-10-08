@@ -53,4 +53,6 @@ MonoBehaviour:
     \u0441\u0442\u0443\u043B\u2026"
   textLineEn: "Here\u2019s a good reason to be afraid of dentists: the electric chair
     had been invented by one of them. "
+  speedLineRu: 0.05
+  speedLineEn: 0.05
   emotions: 3

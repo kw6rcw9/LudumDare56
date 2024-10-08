@@ -7,7 +7,6 @@ namespace _Source.BeautifulText
 {
     public class BeautifulText : MonoBehaviour
     {
-        public float typingSpeed = 0.05f;
         public TMP_Text dialogueText;
         public AudioSource audioSource;
         public Image profile;
@@ -20,32 +19,35 @@ namespace _Source.BeautifulText
         {
             string text;
             AudioClip clip;
+            float typingSpeed;
             if (PlayerPrefs.GetInt("Lang") == 0)
             {
                 text = voiceLine.textLineEn;
                 clip = voiceLine.voiceLineEn;
+                typingSpeed = voiceLine.speedLineEn;
             } else
             {
                 text = voiceLine.textLineRu;
                 clip = voiceLine.voiceLineRu;
+                typingSpeed = voiceLine.speedLineRu;
             }
             
-            NewMessage(text, clip, voiceLine.emotions);
+            NewMessage(text, clip, voiceLine.emotions, typingSpeed);
         }
         
         private void OnEnable()
         {
-            BeautifulTextTrigger.beautifulSpeacAction += NewMessage;
+            // BeautifulTextTrigger.beautifulSpeacAction += NewMessage;
         }
 
-        private void NewMessage(string text, AudioClip clip, string emotions)
+        private void NewMessage(string text, AudioClip clip, string emotions, float typingSpeed)
         {
             audioSource.clip = clip;
             audioSource.Play();
-            StartCoroutine(ShowText(text, emotions));
+            StartCoroutine(ShowText(text, emotions, typingSpeed));
         }
 
-        private IEnumerator ShowText(string text, string emotions)
+        private IEnumerator ShowText(string text, string emotions, float typingSpeed)
         {
             wrapper.SetActive(true);
             text += "                         ";

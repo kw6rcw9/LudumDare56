@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Core;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -41,11 +42,13 @@ namespace _Source.Settings
         {
             LanguageManager.SetLanguageEnAction -= setLangEn;
             LanguageManager.SetLanguageRuAction -= setLangRu;
+            Bootstrapper.DisposeAction -= Dispose;
         }
         private void Awake()
         {
             LanguageManager.SetLanguageEnAction += setLangEn;
             LanguageManager.SetLanguageRuAction += setLangRu;
+            Bootstrapper.DisposeAction += Dispose;
         }
 
         private void Start()

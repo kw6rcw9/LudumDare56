@@ -52,4 +52,6 @@ MonoBehaviour:
     \u043D\u0430 80%? "
   textLineEn: 'Oh by the way, the genetic code of a human is different from that
     of a mouse only by 20% '
+  speedLineRu: 0.05
+  speedLineEn: 0.05
   emotions: 1

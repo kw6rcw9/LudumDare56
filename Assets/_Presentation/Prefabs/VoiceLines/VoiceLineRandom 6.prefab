@@ -52,4 +52,6 @@ MonoBehaviour:
     \u043D\u0430 60%."
   textLineEn: 'Wow. Your DNA is quite similar to that of a banana, somewhere around
     60% '
+  speedLineRu: 0.05
+  speedLineEn: 0.05
   emotions: 2
