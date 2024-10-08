@@ -47,6 +47,7 @@ namespace Core.MapSystem.Data
             }
             else if (!IsNeeded )
             {
+                Debug.Log("Here???");
                 StartCoroutine( Lose());
             }
             else if(IsNeeded && PathGenerator.CorrectPath.Peek() == transform)
@@ -74,7 +75,10 @@ namespace Core.MapSystem.Data
 
             }
             else if(IsNeeded && PathGenerator.CorrectPath.Peek() != transform )
-            {
+            { 
+                Debug.Log(IsNeeded);
+                Debug.Log(PathGenerator.CorrectPath.Peek());
+                Debug.Log("Here?");
                 StartCoroutine( Lose());
             }
             
@@ -88,6 +92,7 @@ namespace Core.MapSystem.Data
 
         IEnumerator Lose()
         {
+            Debug.Log("Why lose");
             Timer.IsRunnning = false;
             Movement.EnableMovement = false;
             yield return new WaitForSeconds(1);
@@ -111,7 +116,7 @@ namespace Core.MapSystem.Data
             audioSource.clip = winSFX;
             audioSource.Play();
             Debug.Log("Win");
-            yield return new WaitForSeconds(3);
+            //yield return new WaitForSeconds(3);
             WinAction?.Invoke();
         }
     }

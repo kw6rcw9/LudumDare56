@@ -44,6 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1c9b6d7b2784d71aedcd86f47ecc78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firstRoundDelay: 16
+  roundDelay: 2.5
   pathLightingDelay: 0.5
   pathEndDelay: 5
   boardSize: {x: 4, y: 4}
