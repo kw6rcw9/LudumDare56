@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8228098915549855340
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4548773077377584039}
+  - component: {fileID: 185759204094471779}
+  m_Layer: 0
+  m_Name: VoiceLineRandom 13
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4548773077377584039
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8228098915549855340}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &185759204094471779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8228098915549855340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85e4464dc874aab4f9ad77c5d0809bf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  voiceLineRu: {fileID: 8300000, guid: a213ff02b78821f468b069b439e04158, type: 3}
+  voiceLineEn: {fileID: 8300000, guid: aa8e000c0f1946c43a5469df9b2ce000, type: 3}
+  textLineRu: "\u041F\u0435\u0440\u0432\u044B\u0439 \u043A\u043E\u043C\u043F\u044C\u044E\u0442\u0435\u0440\u043D\u044B\u0439
+    \"\u0431\u0430\u0433\" \u0431\u044B\u043B \u043D\u0430\u0441\u0442\u043E\u044F\u0449\u0438\u043C
+    \u043D\u0430\u0441\u0435\u043A\u043E\u043C\u044B\u043C."
+  textLineEn: "The first computer bug ever was\u2026 actually it was an actual bug,
+    forget it.  "
+  emotions: 4
