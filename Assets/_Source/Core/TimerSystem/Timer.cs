@@ -81,7 +81,7 @@ namespace Core.TimerSystem
 
         public void Action()
         {
-            if(!Movement.LastMoveUpDir)
+            //if(!Movement.LastMoveUpDir)
                 animator.Play("Idle Breath");
         }
 
