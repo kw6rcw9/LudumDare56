@@ -52,7 +52,7 @@ public class MainMenuManager : MonoBehaviour
     private void normalVoid()
     {
         audioSourceSFX.Play();
-        SceneManager.LoadScene("Level 1");
+        SceneManager.LoadScene("FirstLevel");
         Debug.Log("normalVoid");
     }
 

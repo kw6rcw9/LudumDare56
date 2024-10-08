@@ -43,20 +43,6 @@ namespace _Source.Voice
                 yield return null;
             }
 
-            // get singleton instance
-            _mSpeechSynthesisPlugin = SpeechSynthesisUtils.GetInstance();
-            if (null == _mSpeechSynthesisPlugin)
-            {
-                Debug.LogError("Speech Synthesis Plugin is not set!");
-                yield break;
-            }
-
-            // wait for proxy to become available
-            while (!_mSpeechSynthesisPlugin.IsAvailable())
-            {
-                yield return null;
-            }
-
             _mSpeechDetectionPlugin.AddListenerOnDetectionResult(HandleDetectionResult);
         }
         
