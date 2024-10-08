@@ -4,12 +4,17 @@ using System.Collections.Generic;
 using _Source.BeautifulText;
 using Core;
 using Core.MapSystem.Data;
+using Core.PlayerController;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+
+using Timer = Core.TimerSystem.Timer;
+
 using DG.Tweening;
+
 
 public class LevelManager : MonoBehaviour
 {
@@ -42,10 +47,13 @@ public class LevelManager : MonoBehaviour
     {
         TieInfo.LoseAction += Lose;
         TieInfo.WinAction += Win;
+        Timer.LoseAction += Lose;
     }
 
     private void OnDisable()
     {
+
+
     }
 
     public void SetLanguageRu()
@@ -68,7 +76,12 @@ public class LevelManager : MonoBehaviour
 
     public void Win()
     {
+
+        Movement.EnableMovement = false;
+        beautifulText.NewMessageWithVL(voiceLinesWellDone[new System.Random().Next(voiceLinesWellDone.Length)]);
+
         fadein.DOFade(0.8f, 1).OnComplete(delegate {fadein.DOFade(0.05f, 3f);});
+
         background.SetActive(true);
 
         beautifulText.NewMessageWithVL(voiceLinesWellDone[new System.Random().Next(voiceLinesWellDone.Length)]);
@@ -80,7 +93,11 @@ public class LevelManager : MonoBehaviour
 
     public void Lose()
     {
+
+        Movement.EnableMovement = false;
+
         fadein.DOFade(0.8f, 1).OnComplete(delegate {fadein.DOFade(0.05f, 3f);});
+
         background.SetActive(true);
         
 

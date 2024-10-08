@@ -10,14 +10,16 @@ namespace Core.PlayerController
     public class Movement
     {
         private Player _player;
-        private bool _disabeleMovement;
+        public static bool EnableMovement;
+        public static bool EnableRightMovement = true;
+        public static bool EnableLeftMovement = true;
 
 
         private AudioSource _audioSourceSFX;
 
         [SerializeField] private AudioSource AudioSource;
         [SerializeField] private AudioClip MoveSound;
-        private bool _lookingLeft;
+        private bool _lookingLeft = true;
         
         
 
@@ -25,7 +27,7 @@ namespace Core.PlayerController
         public Movement(Player player, Timer timer, AudioSource audioSourceSFX)
 
         {
-            _disabeleMovement = true;
+            EnableMovement = false;
             _audioSourceSFX = audioSourceSFX;
             _player = player;
             _timer = timer;
@@ -34,10 +36,11 @@ namespace Core.PlayerController
 
         void Move(int dir)
         {
-            /*if (_disabeleMovement)
+            
+            if (!EnableMovement)
             {
                 return;
-            }*/
+            }
             
             _audioSourceSFX.Play();
             _timer.StopTimer();
@@ -58,6 +61,12 @@ namespace Core.PlayerController
         }
         public void MoveLeft()
         {
+             
+            if (!EnableMovement || !EnableLeftMovement)
+            {
+                return;
+            }
+            _timer.StopTimer();
             if(!_lookingLeft)
                 _player.GetComponent<SpriteRenderer>().flipX = false;
             _lookingLeft = true;
@@ -69,6 +78,12 @@ namespace Core.PlayerController
 
         public void MoveRight()
         {
+             
+            if (!EnableMovement || !EnableRightMovement)
+            {
+                return;
+            }
+            _timer.StopTimer();
             if(_lookingLeft)
                 _player.GetComponent<SpriteRenderer>().flipX = true;
             _lookingLeft = false;
@@ -82,7 +97,12 @@ namespace Core.PlayerController
 
         public void MoveUp()
         {
-            
+             
+            if (!EnableMovement)
+            {
+                return;
+            }
+            _timer.StopTimer();
             _player.Animator.Play("Walk Up");
             //_player.transform.Translate(new Vector3(0,0,_player.DestinationToMoveVer));
             _player.transform.DOLocalMove(new Vector3(_player.transform.localPosition.x,  _player.DestinationToMoveVer+_player.transform.localPosition.y, _player.transform.localPosition.z), _player.Speed)
