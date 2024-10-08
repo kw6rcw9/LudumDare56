@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -18,11 +19,14 @@ public class MainMenuManager : MonoBehaviour
     public GameObject Leaderboard;
     public Button LeaderboardButton;
     public Button LeaderboardCloseButton;
+    public GameObject ArcadeLock;
+    public TMP_Text ArcadeLockLabel;
 
     [SerializeField] private AudioSource audioSourceSFX;
     
     public void SetLanguageRu()
     {
+        ArcadeLockLabel.text = "Скоро...";
         Settings.gameObject.GetComponent<Image>().sprite = SettingsRU;
         Arcade.gameObject.GetComponent<Image>().sprite = ArcadeRU;
         Normal.gameObject.GetComponent<Image>().sprite = NormalRU;
@@ -30,6 +34,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void SetLanguageEn()
     {
+        ArcadeLockLabel.text = "Coming soon...";
         Settings.gameObject.GetComponent<Image>().sprite = SettingsEN;
         Arcade.gameObject.GetComponent<Image>().sprite = ArcadeEN;
         Normal.gameObject.GetComponent<Image>().sprite = NormalEN;
@@ -39,10 +44,6 @@ public class MainMenuManager : MonoBehaviour
     {
         LanguageManager.SetLanguageEnAction -= SetLanguageEn;
         LanguageManager.SetLanguageRuAction -= SetLanguageRu;
-    }
-
-    private void leaderboardVoid()
-    {
     }
 
     private void normalVoid()
@@ -56,9 +57,13 @@ public class MainMenuManager : MonoBehaviour
 
     private void arcadeVoid()
     {
+        Debug.Log("arcadeVoid");
+        if (!PlayerPrefs.HasKey("ArcadeAvailable"))
+        {
+            return;
+        }
         audioSourceSFX.Play();
         StopHandling();
-        Debug.Log("arcadeVoid");
     }
 
 
@@ -88,5 +93,9 @@ public class MainMenuManager : MonoBehaviour
         LeaderboardCloseButton.onClick.AddListener(closeLeaderboard);
         LanguageManager.SetLanguageEnAction += SetLanguageEn;
         LanguageManager.SetLanguageRuAction += SetLanguageRu;
+        if (PlayerPrefs.HasKey("ArcadeAvailable"))
+        {
+            ArcadeLock.SetActive(false);
+        }
     }
 }
