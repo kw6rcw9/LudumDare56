@@ -1,11 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Core.MapSystem;
+using Core.PlayerController;
 using UnityEngine;
 
 namespace Core.TimerSystem
 {
     public class Timer : MonoBehaviour
     {
+        [SerializeField] private float delayBetweenLose;
         [SerializeField] private Animator animator;
         [SerializeField]
         private int startTime;
@@ -14,7 +18,8 @@ namespace Core.TimerSystem
         [SerializeField] private AudioSource audioSource;
         [SerializeField] private AudioClip electricUpSFX;
         [SerializeField] private AudioClip electricShockSFX;
-        private bool isRunnning = true;
+        public static Action LoseAction;
+        private bool isRunnning;
         private bool _runActionsCoroutine;
         private bool electricIsRunning = false;
 
@@ -28,34 +33,29 @@ namespace Core.TimerSystem
         {
             StopAllCoroutines();
         }
-        
-        void Start()
+
+       
+
+        void StartRoundAction()
         {
-            StartCoroutine(StartTimer());
-            
+            isRunnning = true;
+        }
+
+        private void OnEnable()
+        {
+            isRunnning = false;
+            PathGenerator.StartTimerAction += StartRoundAction;
         }
 
         void Update()
         {
-            // if (isRunnning)
-            // {
-            //     if (timeLeft > 0)
-            //     {
-            //         timeLeft -= Time.deltaTime;
-            //         if (!_runActionsCoroutine)
-            //         {
-            //             _runActionsCoroutine = false;
-            //         }
-            //         //UpdateTimerText();
-            //         
-            //     }
-            //     else
-            //     {
-            //         timeLeft = 0;
-            //         TimerEnded();
-            //     }
-            //     
-            // }
+            if (isRunnning)
+            {
+               StartCoroutine(StartTimer());
+               isRunnning = false;
+            }
+           
+           
         }
 
         void UpdateTimerText()
@@ -63,14 +63,19 @@ namespace Core.TimerSystem
             //timerText.text = Mathf.Round(timeLeft).ToString();
         }
 
-        void TimerEnded()
+        IEnumerator TimerEnded()
         {
+            
             isRunnning = false;
+            Movement.EnableMovement = false;
             Debug.Log("Таймер закончился!");
             audioSource.Stop();
             audioSource.clip = electricShockSFX;
             audioSource.Play();
             animator.Play("Electic Shock");
+            yield return new WaitForSeconds(delayBetweenLose);
+            LoseAction?.Invoke();
+
         }
 
         public void Action()
@@ -101,7 +106,7 @@ namespace Core.TimerSystem
             }
             
             
-                TimerEnded();
+                StartCoroutine(TimerEnded());
             
             
         }

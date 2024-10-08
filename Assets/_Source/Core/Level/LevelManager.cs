@@ -3,11 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using _Source.BeautifulText;
 using Core.MapSystem.Data;
+using Core.PlayerController;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Timer = Core.TimerSystem.Timer;
 
 public class LevelManager : MonoBehaviour
 {
@@ -39,12 +41,15 @@ public class LevelManager : MonoBehaviour
     {
         TieInfo.LoseAction += Lose;
         TieInfo.WinAction += Win;
+        Timer.LoseAction += Lose;
     }
 
     private void OnDisable()
     {
         TieInfo.WinAction -= Win;
         TieInfo.LoseAction -= Lose;
+        Timer.LoseAction -= Lose;
+
     }
 
     public void SetLanguageRu()
@@ -67,6 +72,7 @@ public class LevelManager : MonoBehaviour
 
     public void Win()
     {
+        Movement.EnableMovement = false;
         beautifulText.NewMessageWithVL(voiceLinesWellDone[new System.Random().Next(voiceLinesWellDone.Length)]);
         background.SetActive(true);
         nextButton.gameObject.SetActive(true);
@@ -76,6 +82,7 @@ public class LevelManager : MonoBehaviour
 
     public void Lose()
     {
+        Movement.EnableMovement = false;
         background.SetActive(true);
         restartButton.gameObject.SetActive(true);
         failure.gameObject.SetActive(true);

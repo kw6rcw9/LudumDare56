@@ -4,6 +4,7 @@
  using System.Collections.Generic;
  using System.Linq;
  using Core.MapSystem.Data;
+ using Core.PlayerController;
  using UnityEditor;
  using Random = System.Random;
 
@@ -18,25 +19,39 @@
         [SerializeField] private List<Transform> tiles;
         [SerializeField] private Sprite pathFinder;
         [SerializeField] private Sprite defaultCol;
+        public static Action StartTimerAction;
+        private Movement _movement;
         private Queue<Transform> _tilesQueue;
         private Queue<Transform> _lightedPath;
         private List<Transform> _fullPath;
         public static Queue<Transform> CorrectPath;
+        public static int YBoardSize;
 
-        private void Awake()
+        private void Start()
         {
+          YBoardSize = (int)boardSize.y;
           CorrectPath = new Queue<Transform>();
           _tilesQueue = new Queue<Transform>();
           _lightedPath = new Queue<Transform>();
           _fullPath = new List<Transform>();
+          int i = -1;
           foreach (var tile in tiles)
           {
+            i++;
+            if (i == boardSize.y)
+              i = 0;
+            tile.GetComponent<TieInfo>().NumInRow = i;
             _tilesQueue.Enqueue(tile);
           }
          
           RandomGeneration();
           StartCoroutine(LightTheWay());
           StartCoroutine(ShowOffTheWay());
+        }
+
+        public void Construct(Movement movement)
+        {
+          _movement = movement;
         }
 
         public IEnumerator LightTheWay()
@@ -60,6 +75,10 @@
           {
             tile.GetComponent<SpriteRenderer>().sprite = defaultCol;
           }
+
+          Movement.EnableMovement = true;
+          StartTimerAction?.Invoke();
+
         }
 
         public Transform[,] RandomGeneration()
@@ -72,7 +91,7 @@
     for (int j = 0; j < matrix.GetLength(1); j++)
     {
       matrix[i, j] = _tilesQueue.Dequeue();
-      Debug.Log(matrix[i,j]);
+      //Debug.Log(matrix[i,j]);
     }
     
   }

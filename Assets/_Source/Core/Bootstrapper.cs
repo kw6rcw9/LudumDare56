@@ -1,5 +1,6 @@
 using System;
 using _Source.Settings;
+using Core.MapSystem;
 using Core.PlayerController;
 using Core.TimerSystem;
 using UnityEngine;
@@ -15,13 +16,15 @@ namespace Core
         [SerializeField] private Timer timer;
         [SerializeField] private AudioSource audioSourceSFX;
         [SerializeField] private MoveInput moveInput;
+        [SerializeField] private PathGenerator pathGenerator;
         private Movement _movement;
-        private void Start()
+        private void Awake()
         {
             if (player != null)
             {
                 _movement = new Movement(player, timer, audioSourceSFX);
                 moveInput.Construct(_movement);
+                pathGenerator.Construct(_movement);
             }
         }
 
