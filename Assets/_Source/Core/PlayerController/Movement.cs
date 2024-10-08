@@ -13,6 +13,7 @@ namespace Core.PlayerController
         public static bool EnableMovement;
         public static bool EnableRightMovement = true;
         public static bool EnableLeftMovement = true;
+        public static bool LastMoveUpDir = true;
 
 
         private AudioSource _audioSourceSFX;
@@ -66,6 +67,8 @@ namespace Core.PlayerController
             {
                 return;
             }
+
+            LastMoveUpDir = false;
             _timer.StopTimer();
             if(!_lookingLeft)
                 _player.GetComponent<SpriteRenderer>().flipX = false;
@@ -83,6 +86,7 @@ namespace Core.PlayerController
             {
                 return;
             }
+            LastMoveUpDir = false;
             _timer.StopTimer();
             if(_lookingLeft)
                 _player.GetComponent<SpriteRenderer>().flipX = true;
@@ -102,6 +106,7 @@ namespace Core.PlayerController
             {
                 return;
             }
+            LastMoveUpDir = true;
             _timer.StopTimer();
             _player.Animator.Play("Walk Up");
             //_player.transform.Translate(new Vector3(0,0,_player.DestinationToMoveVer));

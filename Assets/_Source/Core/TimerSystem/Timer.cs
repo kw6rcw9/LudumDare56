@@ -19,7 +19,8 @@ namespace Core.TimerSystem
         [SerializeField] private AudioClip electricUpSFX;
         [SerializeField] private AudioClip electricShockSFX;
         public static Action LoseAction;
-        private bool isRunnning;
+        public static bool IsRunnning;
+        private bool _isRunningForUpdate;
         private bool _runActionsCoroutine;
         private bool electricIsRunning = false;
 
@@ -38,21 +39,21 @@ namespace Core.TimerSystem
 
         void StartRoundAction()
         {
-            isRunnning = true;
+            _isRunningForUpdate = true;
         }
 
         private void OnEnable()
         {
-            isRunnning = false;
+            _isRunningForUpdate = false;
             PathGenerator.StartTimerAction += StartRoundAction;
         }
 
         void Update()
         {
-            if (isRunnning)
+            if (_isRunningForUpdate)
             {
                StartCoroutine(StartTimer());
-               isRunnning = false;
+               _isRunningForUpdate = false;
             }
            
            
@@ -66,7 +67,7 @@ namespace Core.TimerSystem
         IEnumerator TimerEnded()
         {
             
-            isRunnning = false;
+            _isRunningForUpdate = false;
             Movement.EnableMovement = false;
             Debug.Log("Таймер закончился!");
             audioSource.Stop();
@@ -80,17 +81,22 @@ namespace Core.TimerSystem
 
         public void Action()
         {
-            animator.Play("Idle");
+            if(!Movement.LastMoveUpDir)
+                animator.Play("Idle Breath");
         }
 
         public IEnumerator StartTimer()
         {
+            timeLeft = startTime;
+            IsRunnning = true;
                 var actionDelay = 0;
             while (timeLeft > 0)
             {
+                if(!IsRunnning)
+                    yield break;
                 timeLeft -= 1;
                 actionDelay++;
-                if (actionDelay >= 3)
+                if (actionDelay >= 6)
                 {
                     actionDelay = 0;
                     Action();
