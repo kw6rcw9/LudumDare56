@@ -8,6 +8,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public class LevelManager : MonoBehaviour
 {
@@ -32,6 +33,7 @@ public class LevelManager : MonoBehaviour
     public VoiceLine voiceLineIntro;
     public VoiceLine[] voiceLinesWellDone;
     public VoiceLine[] voiceLinesRandom;
+    public Image fadein;
 
     private float startedAt;
 
@@ -67,8 +69,11 @@ public class LevelManager : MonoBehaviour
 
     public void Win()
     {
-        beautifulText.NewMessageWithVL(voiceLinesWellDone[new System.Random().Next(voiceLinesWellDone.Length)]);
+        fadein.DOFade(0.8f, 1).OnComplete(delegate {fadein.DOFade(0.05f, 3f);});
         background.SetActive(true);
+
+        beautifulText.NewMessageWithVL(voiceLinesWellDone[new System.Random().Next(voiceLinesWellDone.Length)]);
+
         nextButton.gameObject.SetActive(true);
         success.gameObject.SetActive(true);
         timeTextTime.text = getDurationText();
@@ -76,7 +81,10 @@ public class LevelManager : MonoBehaviour
 
     public void Lose()
     {
+        fadein.DOFade(0.8f, 1).OnComplete(delegate {fadein.DOFade(0.05f, 3f);});
         background.SetActive(true);
+        
+
         restartButton.gameObject.SetActive(true);
         failure.gameObject.SetActive(true);
         timeTextTime.text = getDurationText();
@@ -125,7 +133,7 @@ public class LevelManager : MonoBehaviour
         }
         else
         {
-             beautifulText.NewMessageWithVL(voiceLinesRandom[new System.Random().Next(voiceLinesRandom.Length)]);
+            beautifulText.NewMessageWithVL(voiceLinesRandom[new System.Random().Next(voiceLinesRandom.Length)]);
         }
     }
 }
