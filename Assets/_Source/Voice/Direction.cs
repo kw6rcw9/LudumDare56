@@ -11,6 +11,7 @@ namespace _Source.Voice
     {
         public static Action<int> movementAction;
         public static Action<int> scoundrelAction;
+
         
         /// <summary>
         /// Reference to the detection plugin

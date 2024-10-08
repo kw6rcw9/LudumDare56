@@ -1,6 +1,7 @@
 using _Source.Voice;
 using Core.TimerSystem;
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,7 +10,7 @@ namespace Core.PlayerController
     public class Movement
     {
         private Player _player;
-
+        private bool _disabeleMovement;
 
 
         private AudioSource _audioSourceSFX;
@@ -24,6 +25,7 @@ namespace Core.PlayerController
         public Movement(Player player, Timer timer, AudioSource audioSourceSFX)
 
         {
+            _disabeleMovement = true;
             _audioSourceSFX = audioSourceSFX;
             _player = player;
             _timer = timer;
@@ -32,6 +34,11 @@ namespace Core.PlayerController
 
         void Move(int dir)
         {
+            if (_disabeleMovement)
+            {
+                return;
+            }
+            
             _audioSourceSFX.Play();
             _timer.StopTimer();
             switch (dir)
@@ -56,7 +63,7 @@ namespace Core.PlayerController
             _lookingLeft = true;
             _player.Animator.Play("Walk Left");
             //_player.transform.Translate(new Vector3(-_player.DestinationToMoveHor,0,0));
-            _player.transform.DOMove(new Vector3(-_player.DestinationToMoveHor+_player.transform.position.x,_player.transform.position.y,_player.transform.position.z), _player.Speed)
+            _player.transform.DOLocalMove(new Vector3(-_player.DestinationToMoveHor+_player.transform.localPosition.x,_player.transform.localPosition.y,_player.transform.localPosition.z), _player.Speed)
                 .OnComplete(SetTimer);
         }
 
@@ -68,7 +75,7 @@ namespace Core.PlayerController
 
             _player.Animator.Play("Walk Left");
             //_player.transform.Translate(new Vector3(_player.DestinationToMoveHor,0,0));
-            _player.transform.DOMove(new Vector3(_player.DestinationToMoveHor+_player.transform.position.x, _player.transform.position.y, _player.transform.position.z), _player.Speed)
+            _player.transform.DOLocalMove(new Vector3(_player.DestinationToMoveHor+_player.transform.localPosition.x, _player.transform.localPosition.y, _player.transform.localPosition.z), _player.Speed)
                 .OnComplete(SetTimer);
 
         }
@@ -78,7 +85,7 @@ namespace Core.PlayerController
             
             _player.Animator.Play("Walk Up");
             //_player.transform.Translate(new Vector3(0,0,_player.DestinationToMoveVer));
-            _player.transform.DOMove(new Vector3(_player.transform.position.x, _player.transform.position.y, _player.DestinationToMoveVer+_player.transform.position.z), _player.Speed)
+            _player.transform.DOLocalMove(new Vector3(_player.transform.localPosition.x,  _player.DestinationToMoveVer+_player.transform.localPosition.y, _player.transform.localPosition.z), _player.Speed)
                 .OnComplete(SetTimer);
 
         }
