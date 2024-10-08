@@ -101,13 +101,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <IsNeeded>k__BackingField: 0
+  <NumInRow>k__BackingField: -1
+  loseColor: {fileID: 21300000, guid: a3b76b4e99bef4623bd2fedb636ee07a, type: 3}
+  rightColor: {fileID: 21300000, guid: 5d81dbd202c704cf68a4c1ab49ec3600, type: 3}
+  firstTile: {fileID: 21300000, guid: 5d81dbd202c704cf68a4c1ab49ec3600, type: 3}
   audioSource: {fileID: 7739714019537631741}
   correctSFX: {fileID: 8300000, guid: a9e0e0710ca2d64488d6c6b0ce40c695, type: 3}
   incorrectSFX: {fileID: 8300000, guid: 515c058ca58681946843bfa5398517af, type: 3}
   winSFX: {fileID: 8300000, guid: 8e198dc46eda20749a5af555d7c81bec, type: 3}
-  loseColor: {fileID: 21300000, guid: a3b76b4e99bef4623bd2fedb636ee07a, type: 3}
-  rightColor: {fileID: 21300000, guid: 5d81dbd202c704cf68a4c1ab49ec3600, type: 3}
-  firstTile: {fileID: 21300000, guid: 5d81dbd202c704cf68a4c1ab49ec3600, type: 3}
+  electricShockSFX: {fileID: 8300000, guid: 49618191aa441b64b926b9e5760ee3dd, type: 3}
 --- !u!65 &436471613774396968
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Core.PlayerController;
 using Unity.VisualScripting;
 using UnityEngine;
+using Timer = Core.TimerSystem.Timer;
 
 namespace Core.MapSystem.Data
 {
@@ -18,6 +19,7 @@ namespace Core.MapSystem.Data
         [SerializeField] private AudioClip correctSFX;
         [SerializeField] private AudioClip incorrectSFX;
         [SerializeField] private AudioClip winSFX;
+        [SerializeField] private AudioClip electricShockSFX;
         
         private Animator _animator;
         private bool _errorMove;
@@ -86,6 +88,7 @@ namespace Core.MapSystem.Data
 
         IEnumerator Lose()
         {
+            Timer.IsRunnning = false;
             Movement.EnableMovement = false;
             yield return new WaitForSeconds(1);
             audioSource.clip = incorrectSFX;
@@ -93,6 +96,8 @@ namespace Core.MapSystem.Data
             transform.GetComponent<SpriteRenderer>().sprite = loseColor;
             Debug.Log("Lose");
             yield return new WaitForSeconds(1);
+            audioSource.clip = electricShockSFX;
+            audioSource.Play();
             _animator.Play("Electic Shock");
             yield return new WaitForSeconds(3);
             LoseAction?.Invoke();
@@ -100,6 +105,7 @@ namespace Core.MapSystem.Data
 
         IEnumerator Win()
         {
+            Timer.IsRunnning = false;
             Movement.EnableMovement = false;
             yield return new WaitForSeconds(1);
             audioSource.clip = winSFX;
