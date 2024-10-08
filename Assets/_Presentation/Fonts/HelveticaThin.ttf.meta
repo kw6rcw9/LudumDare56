@@ -1,15 +1,15 @@
 fileFormatVersion: 2
-guid: caed9f3396d1a414197669fa42608f24
+guid: 6fc040db5033cfd4d887bcd840c6ce69
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
   fontSize: 16
-  forceTextureCase: -2
+  forceTextureCase: -1
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Helvetica
+  - HelveticaNeueCyr
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

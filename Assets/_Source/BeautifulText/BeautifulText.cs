@@ -14,6 +14,8 @@ namespace _Source.BeautifulText
         public Image profile;
         public Sprite[] emotionList;
         public GameObject wrapper;
+        public float typingSpeed = 0.05f;
+        public Image messageBG;
 
         private string currentText;
 
@@ -21,20 +23,17 @@ namespace _Source.BeautifulText
         {
             string text;
             AudioClip clip;
-            float typingSpeed;
             if (PlayerPrefs.GetInt("Lang") == 0)
             {
                 text = voiceLine.textLineEn;
                 clip = voiceLine.voiceLineEn;
-                typingSpeed = voiceLine.speedLineEn;
             } else
             {
                 text = voiceLine.textLineRu;
                 clip = voiceLine.voiceLineRu;
-                typingSpeed = voiceLine.speedLineRu;
             }
             
-            NewMessage(text, clip, voiceLine.emotions, typingSpeed);
+            NewMessage(text, clip, voiceLine.emotions);
         }
         
         private void OnEnable()
@@ -42,11 +41,11 @@ namespace _Source.BeautifulText
             // BeautifulTextTrigger.beautifulSpeacAction += NewMessage;
         }
 
-        private void NewMessage(string text, AudioClip clip, string emotions, float typingSpeed)
+        private void NewMessage(string text, AudioClip clip, string emotions)
         {
             audioSource.clip = clip;
             audioSource.Play();
-            StartCoroutine(ShowText(text, emotions, typingSpeed));
+            StartCoroutine(ShowText(text, emotions));
         }
 
         private void DOFadeWithChildreb(GameObject gameObject, float fade, float time)
@@ -54,7 +53,14 @@ namespace _Source.BeautifulText
             gameObject.GetComponent<Image>()?.DOFade(fade, time);
             foreach (Image child in gameObject.GetComponentsInChildren<Image>())
             {
-                child.DOFade(fade, time);
+                if (child == messageBG && fade > 0.33f)
+                {
+                    child.DOFade(0.33f, time);
+                }
+                else
+                {
+                    child.DOFade(fade, time);
+                }
             }
             foreach (TMP_Text child in gameObject.GetComponentsInChildren<TMP_Text>())
             {
@@ -67,9 +73,9 @@ namespace _Source.BeautifulText
             DOFadeWithChildreb(wrapper, 0, 0);
         }
 
-        private IEnumerator ShowText(string text, string emotions, float typingSpeed)
+        private IEnumerator ShowText(string text, string emotions)
         {
-            DOFadeWithChildreb(wrapper, 0.9f, 2);
+            DOFadeWithChildreb(wrapper, 1, 2);
             text += "                           ";
             string[] splittedText = text.Split("&");
             int j;
@@ -94,6 +100,7 @@ namespace _Source.BeautifulText
 
             if (j == splittedText.Length && text.Length < i)
             {
+                yield return new WaitForSeconds(audioSource.clip.length - audioSource.time);
                 DOFadeWithChildreb(wrapper, 0f, 1);
             }
         }

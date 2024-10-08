@@ -193,6 +193,8 @@ MonoBehaviour:
   - {fileID: 1839284348, guid: 573d69fe16ab7dd4c81afaa4d0f43c55, type: 3}
   - {fileID: 718620648, guid: 6e3430128eef74e4f93357c72d37697e, type: 3}
   wrapper: {fileID: 2478091815609048653}
+  typingSpeed: 0.05
+  messageBG: {fileID: 8499914583602688236}
 --- !u!1 &1142883919841133703
 GameObject:
   m_ObjectHideFlags: 0

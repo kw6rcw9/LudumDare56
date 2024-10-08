@@ -8,10 +8,8 @@ using UnityEngine;
 public class BeautifulTextTrigger : MonoBehaviour
 {
     public float retryDelay = 10;
-    private AudioClip audioClip;
-    private string text = "";
-    public static Action<string, AudioClip, string> beautifulSpeacAction;
 
+    public BeautifulText beautifulText;
     public VoiceLine voiceLine;
 
     void Start()
@@ -23,17 +21,8 @@ public class BeautifulTextTrigger : MonoBehaviour
     {
         while (true)
         {
+            beautifulText.NewMessageWithVL(voiceLine);
             Debug.Log("Invoking beautifulSpeacAction");
-            if (PlayerPrefs.GetInt("Lang") == 0)
-            {
-                text = voiceLine.textLineEn;
-                audioClip = voiceLine.voiceLineEn;
-            } else
-            {
-                text = voiceLine.textLineRu;
-                audioClip = voiceLine.voiceLineRu;
-            }
-            beautifulSpeacAction?.Invoke(text, audioClip, voiceLine.emotions);
             yield return new WaitForSeconds(retryDelay);
         }
     }
