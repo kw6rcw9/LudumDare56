@@ -73,7 +73,9 @@
           for (int i = 0; i < amount ;i++)
           {
             yield return new WaitForSeconds(pathLightingDelay);
+            
             var tile = _lightedPath.Dequeue();
+            tile.GetComponent<TieInfo>().CurrAnimator.Play("LightBlue1");
             tile.GetComponent<SpriteRenderer>().sprite = pathFinder;
             _fullPath.Add(tile);
             
@@ -85,6 +87,7 @@
           yield return new WaitForSeconds(pathEndDelay);
           foreach (var tile in _fullPath)
           {
+            tile.GetComponent<TieInfo>().CurrAnimator.Play("LightBlueOff1");
             tile.GetComponent<SpriteRenderer>().sprite = defaultCol;
           }
 
