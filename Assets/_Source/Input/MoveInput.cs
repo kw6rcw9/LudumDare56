@@ -10,6 +10,7 @@ public class MoveInput : MonoBehaviour
 {
     private NewControls _input;
     private Movement _movement;
+   
   
 
     public void Construct(Movement movement)

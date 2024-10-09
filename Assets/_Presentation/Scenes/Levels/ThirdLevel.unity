@@ -472,6 +472,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 2.1816406
       objectReference: {fileID: 0}
+    - target: {fileID: 3117711594281649969, guid: 64a4cdaec659fe04f95fc448d338df0e, type: 3}
+      propertyPath: nextSceneName
+      value: FourthLevel
+      objectReference: {fileID: 0}
     - target: {fileID: 6204964562065731059, guid: 64a4cdaec659fe04f95fc448d338df0e, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -0.22436523
@@ -3220,7 +3224,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 49503c4643f0f4e2a9830f9e8b29d226, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f1adacfabc89c4514aa3018d9f1d6b99, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

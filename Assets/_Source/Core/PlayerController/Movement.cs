@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using _Source.Voice;
 using Core.TimerSystem;
 using DG.Tweening;
@@ -15,8 +17,8 @@ namespace Core.PlayerController
         public static bool EnableLeftMovement = true;
         public static bool LastMoveUpDir = true;
         private bool isTweeing;
-        
-
+        public Queue<Action> Sequence;
+        private Sequence seq;
 
         private AudioSource _audioSourceSFX;
 
@@ -47,28 +49,42 @@ namespace Core.PlayerController
             }
             
             
-            _timer.StopTimer();
+           // _timer.StopTimer();
             switch (dir)
             {
                 case 1:
                     MoveRight();
+                    Sequence.Enqueue(MoveRight);
                     break;
                 case 3:
                     MoveLeft();
+                    Sequence.Enqueue(MoveLeft);
                     break;
                 case 4:
                     MoveUp();
+                    Sequence.Enqueue(MoveUp);
                     break;
                     
+            }
+
+            if (Sequence.Count == 1)
+            {
+                var move = Sequence.Dequeue();
+                move();
             }
             
         }
         public void MoveLeft()
         {
-             
             if (!EnableMovement || !EnableLeftMovement)
+            
             {
                 return;
+            }
+
+            if (seq == null)
+            {
+                seq = DOTween.Sequence();
             }
             _audioSourceSFX.Play();
 
@@ -79,7 +95,8 @@ namespace Core.PlayerController
             _lookingLeft = true;
             _player.Animator.Play("Walk Left");
             //_player.transform.Translate(new Vector3(-_player.DestinationToMoveHor,0,0));
-            _player.transform.DOLocalMove(new Vector3(-_player.DestinationToMoveHor+_player.transform.localPosition.x,_player.transform.localPosition.y,_player.transform.localPosition.z), _player.Speed)
+            
+           _player.transform.DOLocalMove(new Vector3(-_player.DestinationToMoveHor+_player.transform.localPosition.x,_player.transform.localPosition.y,_player.transform.localPosition.z), _player.Speed)
                 .OnComplete(SetTimer);
         }
 
@@ -129,9 +146,14 @@ namespace Core.PlayerController
 
         public void SetTimer()
         {
-            isTweeing = false;
+            
             Debug.Log("ОДИН ТВИН ЗАКОНЧИЛСЯ");
             _timer.SetTimer();
+            if (Sequence.Count > 0)
+            {
+                var move = Sequence.Dequeue();
+                move();
+            }
         }
         
     }

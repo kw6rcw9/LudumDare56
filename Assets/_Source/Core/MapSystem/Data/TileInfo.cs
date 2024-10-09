@@ -101,7 +101,7 @@ namespace Core.MapSystem.Data
             audioSource.clip = incorrectSFX;
             audioSource.Play();
             CurrAnimator.Play("LightRed1");
-            yield return new WaitForSeconds(1);
+            
             //transform.GetComponent<SpriteRenderer>().sprite = loseColor;
             Debug.Log("Lose");
             yield return new WaitForSeconds(1);

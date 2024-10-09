@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Core.MapSystem;
+using Core.MapSystem.Data;
 using Core.PlayerController;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Core.TimerSystem
@@ -27,6 +29,7 @@ namespace Core.TimerSystem
         
         public void SetTimer()
         {
+            
             StartCoroutine(StartTimer());
         }
 
@@ -34,7 +37,7 @@ namespace Core.TimerSystem
         {
             StopAllCoroutines();
         }
-
+        
        
 
         void StartRoundAction()
@@ -46,6 +49,14 @@ namespace Core.TimerSystem
         {
             _isRunningForUpdate = false;
             PathGenerator.StartTimerAction += StartRoundAction;
+            TieInfo.LoseAction += StopTimer;
+        }
+
+        private void OnDisable()
+        {
+            TieInfo.LoseAction += StopTimer;
+            PathGenerator.StartTimerAction -= StartRoundAction;
+        
         }
 
         void Update()
@@ -88,12 +99,11 @@ namespace Core.TimerSystem
         public IEnumerator StartTimer()
         {
             timeLeft = startTime;
-            IsRunnning = true;
+            //IsRunnning = true;
                 var actionDelay = 0;
             while (timeLeft > 0)
             {
-                if(!IsRunnning)
-                    yield break;
+              
                 timeLeft -= 1;
                 actionDelay++;
                 if (actionDelay >= 6)
