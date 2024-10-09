@@ -36,10 +36,11 @@ public class LevelManager : MonoBehaviour
     public Sprite successEN;
     public Sprite successRU;
     public BeautifulText beautifulText;
+    public Image fadein;
     public VoiceLine voiceLineIntro;
     public VoiceLine[] voiceLinesWellDone;
     public VoiceLine[] voiceLinesRandom;
-    public Image fadein;
+    public VoiceLine[] voiceLinesFailure;
 
     private float startedAt;
 
@@ -77,9 +78,6 @@ public class LevelManager : MonoBehaviour
         fadein.DOFade(0.5f, 3f);
 
         background.SetActive(true);
-
-        beautifulText.NewMessageWithVL(voiceLinesWellDone[new System.Random().Next(voiceLinesWellDone.Length)]);
-
         nextButton.gameObject.SetActive(true);
         success.gameObject.SetActive(true);
         timeTextTime.text = getDurationText();
@@ -87,14 +85,12 @@ public class LevelManager : MonoBehaviour
 
     public void Lose()
     {
-
         Movement.EnableMovement = false;
+        beautifulText.NewMessageWithVL(voiceLinesFailure[new System.Random().Next(voiceLinesFailure.Length)]);
 
         fadein.DOFade(0.5f, 3f);
 
         background.SetActive(true);
-        
-
         restartButton.gameObject.SetActive(true);
         failure.gameObject.SetActive(true);
         timeTextTime.text = getDurationText();
