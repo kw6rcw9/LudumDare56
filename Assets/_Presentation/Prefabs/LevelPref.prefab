@@ -1335,14 +1335,6 @@ PrefabInstance:
       propertyPath: <Speed>k__BackingField
       value: 1.5
       objectReference: {fileID: 0}
-    - target: {fileID: 6077968769843447867, guid: c0ec3bd37f74b4c56b0db1e4c0c6257e, type: 3}
-      propertyPath: <DestinationToMoveHor>k__BackingField
-      value: 1.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6077968769843447867, guid: c0ec3bd37f74b4c56b0db1e4c0c6257e, type: 3}
-      propertyPath: <DestinationToMoveVer>k__BackingField
-      value: 1.6
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

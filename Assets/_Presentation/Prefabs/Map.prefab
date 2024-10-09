@@ -979,14 +979,6 @@ PrefabInstance:
       propertyPath: <Animator>k__BackingField
       value: 
       objectReference: {fileID: 4913179907334699321}
-    - target: {fileID: 9101514757554927248, guid: 6b4bfcce45b0146898811c9c9f511582, type: 3}
-      propertyPath: <DestinationToMoveHor>k__BackingField
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 9101514757554927248, guid: 6b4bfcce45b0146898811c9c9f511582, type: 3}
-      propertyPath: <DestinationToMoveVer>k__BackingField
-      value: 1.5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

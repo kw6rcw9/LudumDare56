@@ -23,4 +23,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Presentation/Scenes/Levels/Outro.unity
     guid: 367659c58f6424324956f9f335175fc4
+  - enabled: 1
+    path: Assets/_Presentation/Scenes/Levels/SecondLevel.unity
+    guid: 37001ddb40ee74770b7b0e8924857d8d
+  - enabled: 1
+    path: Assets/_Presentation/Scenes/Levels/ThirdLevel.unity
+    guid: f1d5c8e8a90c74d25a6a21664ae4211e
+  - enabled: 1
+    path: Assets/_Presentation/Scenes/Levels/FourthLevel.unity
+    guid: 8b8412e7980b14eab99aed59a66b069b
+  - enabled: 1
+    path: Assets/_Presentation/Scenes/Levels/FifthLevel.unity
+    guid: 936a174237d134f06a57b482e37f8208
   m_configObjects: {}
