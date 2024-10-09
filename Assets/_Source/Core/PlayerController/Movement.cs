@@ -32,7 +32,7 @@ namespace Core.PlayerController
         public Movement(Player player, Timer timer, AudioSource audioSourceSFX)
 
         {
-            
+            Sequence = new Queue<Action>();
             EnableMovement = false;
             _audioSourceSFX = audioSourceSFX;
             _player = player;
@@ -42,6 +42,7 @@ namespace Core.PlayerController
 
         void Move(int dir)
         {
+            Debug.Log(Sequence.Count);
             
             if (!EnableMovement)
             {
@@ -53,23 +54,23 @@ namespace Core.PlayerController
             switch (dir)
             {
                 case 1:
-                    MoveRight();
+                    //MoveRight();
                     Sequence.Enqueue(MoveRight);
                     break;
                 case 3:
-                    MoveLeft();
+                    //MoveLeft();
                     Sequence.Enqueue(MoveLeft);
                     break;
                 case 4:
-                    MoveUp();
+                    //MoveUp();
                     Sequence.Enqueue(MoveUp);
                     break;
                     
             }
 
-            if (Sequence.Count == 1)
+            if (Sequence.Count < 2)
             {
-                var move = Sequence.Dequeue();
+                var move = Sequence.Peek();
                 move();
             }
             
@@ -94,6 +95,7 @@ namespace Core.PlayerController
                 _player.GetComponent<SpriteRenderer>().flipX = false;
             _lookingLeft = true;
             _player.Animator.Play("Walk Left");
+            Debug.Log("НАчался LEFT");
             //_player.transform.Translate(new Vector3(-_player.DestinationToMoveHor,0,0));
             
            _player.transform.DOLocalMove(new Vector3(-_player.DestinationToMoveHor+_player.transform.localPosition.x,_player.transform.localPosition.y,_player.transform.localPosition.z), _player.Speed)
@@ -115,6 +117,7 @@ namespace Core.PlayerController
             _lookingLeft = false;
 
             _player.Animator.Play("Walk Left");
+            Debug.Log("НАчался Right");
             //_player.transform.Translate(new Vector3(_player.DestinationToMoveHor,0,0));
             _player.transform.DOLocalMove(new Vector3(_player.DestinationToMoveHor+_player.transform.localPosition.x, _player.transform.localPosition.y, _player.transform.localPosition.z), _player.Speed)
                 .OnComplete(SetTimer);
@@ -133,9 +136,11 @@ namespace Core.PlayerController
             LastMoveUpDir = true;
             _timer.StopTimer();
             _player.Animator.Play("Walk Up");
+            Debug.Log("НАчался UP");
             //_player.transform.Translate(new Vector3(0,0,_player.DestinationToMoveVer));
             _player.transform.DOLocalMove(new Vector3(_player.transform.localPosition.x,  _player.DestinationToMoveVer+_player.transform.localPosition.y, _player.transform.localPosition.z), _player.Speed)
                 .OnComplete(SetTimer);
+            
 
         }
 
@@ -146,12 +151,13 @@ namespace Core.PlayerController
 
         public void SetTimer()
         {
-            
-            Debug.Log("ОДИН ТВИН ЗАКОНЧИЛСЯ");
+
+            Sequence.Dequeue();
             _timer.SetTimer();
+            Debug.Log("SEQUENCE COUNT " + Sequence.Count);
             if (Sequence.Count > 0)
             {
-                var move = Sequence.Dequeue();
+                var move = Sequence.Peek();
                 move();
             }
         }
