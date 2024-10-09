@@ -71,7 +71,10 @@ public class LevelManager : MonoBehaviour
 
     public void Win()
     {
-
+        if (background.activeSelf)
+        {
+            return;
+        }
         Movement.EnableMovement = false;
         beautifulText.NewMessageWithVL(voiceLinesWellDone[new System.Random().Next(voiceLinesWellDone.Length)]);
 
@@ -85,6 +88,10 @@ public class LevelManager : MonoBehaviour
 
     public void Lose()
     {
+        if (background.activeSelf)
+        {
+            return;
+        }
         Movement.EnableMovement = false;
         beautifulText.NewMessageWithVL(voiceLinesFailure[new System.Random().Next(voiceLinesFailure.Length)]);
 

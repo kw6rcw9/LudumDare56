@@ -54,7 +54,7 @@ namespace Core.TimerSystem
 
         private void OnDisable()
         {
-            TieInfo.LoseAction += StopTimer;
+            TieInfo.LoseAction -= StopTimer;
             PathGenerator.StartTimerAction -= StartRoundAction;
         
         }

@@ -52,6 +52,10 @@ namespace _Source.Voice
             {
                 return false;
             }
+            if (null == detectionResult.results[^1].alternatives)
+            {
+                return false;
+            }
             string transcript = detectionResult.results[^1].alternatives[0].transcript;
             string[] splitedTranscript = transcript.Split(new char[] { ' ', '-' }, StringSplitOptions.RemoveEmptyEntries);
 
