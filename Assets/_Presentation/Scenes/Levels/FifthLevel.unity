@@ -3167,7 +3167,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4251457474775765680, guid: 0d6af601aa96d4fdf9267aef66b05730, type: 3}
       propertyPath: pathEndDelay
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4251457474775765680, guid: 0d6af601aa96d4fdf9267aef66b05730, type: 3}
       propertyPath: tiles.Array.size

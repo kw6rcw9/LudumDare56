@@ -17,6 +17,7 @@ namespace _Source.BeautifulText
         public float typingSpeed = 0.05f;
         public Image messageBG;
 
+        private float currSprite;
         private string currentText;
 
         public void NewMessageWithVL(VoiceLine voiceLine)
@@ -53,9 +54,9 @@ namespace _Source.BeautifulText
             gameObject.GetComponent<Image>()?.DOFade(fade, time);
             foreach (Image child in gameObject.GetComponentsInChildren<Image>())
             {
-                if (child == messageBG && fade > 0.33f)
+                if (child == messageBG && fade > currSprite)
                 {
-                    child.DOFade(0.33f, time);
+                    child.DOFade(currSprite, time);
                 }
                 else
                 {
@@ -70,6 +71,8 @@ namespace _Source.BeautifulText
 
         private void Start()
         {
+            currSprite = messageBG.GetComponent<Image>().color.a;
+            
             DOFadeWithChildreb(wrapper, 0, 0);
         }
 

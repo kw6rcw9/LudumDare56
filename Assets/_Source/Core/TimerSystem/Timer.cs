@@ -35,6 +35,7 @@ namespace Core.TimerSystem
 
         public void StopTimer()
         {
+            audioSource.Stop();
             StopAllCoroutines();
         }
         
