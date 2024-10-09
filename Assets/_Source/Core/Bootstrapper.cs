@@ -14,6 +14,7 @@ namespace Core
         [SerializeField] private AudioSource audioSourceSFX;
         [SerializeField] private MoveInput moveInput;
         [SerializeField] private PathGenerator pathGenerator;
+        [SerializeField] private PathGeneratorArcade pathGeneratorArcade;
         private Movement _movement;
         public static Action DisposeAction;
 
@@ -24,7 +25,8 @@ namespace Core
             {
                 _movement = new Movement(player, timer, audioSourceSFX);
                 moveInput.Construct(_movement);
-                pathGenerator.Construct(_movement);
+                pathGenerator?.Construct(_movement);
+                pathGeneratorArcade?.Construct(_movement);
             }
         }
 
