@@ -98,10 +98,10 @@ namespace Core.MapSystem.Data
             Debug.Log("Why lose");
             Timer.IsRunnning = false;
             Movement.EnableMovement = false;
-            yield return new WaitForSeconds(1);
             audioSource.clip = incorrectSFX;
             audioSource.Play();
             CurrAnimator.Play("LightRed1");
+            yield return new WaitForSeconds(1);
             //transform.GetComponent<SpriteRenderer>().sprite = loseColor;
             Debug.Log("Lose");
             yield return new WaitForSeconds(1);

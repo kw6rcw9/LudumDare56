@@ -46,7 +46,7 @@ namespace Core.PlayerController
                 return;
             }
             
-            _audioSourceSFX.Play();
+            
             _timer.StopTimer();
             switch (dir)
             {
@@ -70,6 +70,7 @@ namespace Core.PlayerController
             {
                 return;
             }
+            _audioSourceSFX.Play();
 
             LastMoveUpDir = false;
             _timer.StopTimer();
@@ -89,6 +90,7 @@ namespace Core.PlayerController
             {
                 return;
             }
+            _audioSourceSFX.Play();
             LastMoveUpDir = false;
             _timer.StopTimer();
             if(_lookingLeft)
@@ -110,6 +112,7 @@ namespace Core.PlayerController
             {
                 return;
             }
+            _audioSourceSFX.Play();
             LastMoveUpDir = true;
             _timer.StopTimer();
             _player.Animator.Play("Walk Up");

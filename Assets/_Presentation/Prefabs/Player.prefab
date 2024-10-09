@@ -97,7 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e55d76d6d2839480da7d323799558d80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Speed>k__BackingField: 0
-  <DestinationToMoveHor>k__BackingField: 0
-  <DestinationToMoveVer>k__BackingField: 0
+  <Speed>k__BackingField: 1.5
+  <DestinationToMoveHor>k__BackingField: 1.5
+  <DestinationToMoveVer>k__BackingField: 1.5
   <CurrentTile>k__BackingField: {fileID: 0}
+  <Animator>k__BackingField: {fileID: 0}
