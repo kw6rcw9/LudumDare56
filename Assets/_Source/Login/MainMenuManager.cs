@@ -98,9 +98,9 @@ public class MainMenuManager : MonoBehaviour
         Settings.onClick.AddListener(settingsVoid);
         LeaderboardButton.onClick.AddListener(openLeaderboard);
         LeaderboardCloseButton.onClick.AddListener(closeLeaderboard);
-        if (PlayerPrefs.HasKey("ArcadeAvailable"))
-        {
-            ArcadeLock.SetActive(false);
-        }
+        // if (PlayerPrefs.HasKey("ArcadeAvailable"))
+        // {
+        //     ArcadeLock.SetActive(false);
+        // }
     }
 }

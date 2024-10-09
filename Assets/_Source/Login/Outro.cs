@@ -9,6 +9,7 @@ public class Outro : MonoBehaviour
     public TMP_Text textOutro;
     IEnumerator Start()
     {
+        PlayerPrefs.SetInt("ArcadeAvailable", 0);
         if (PlayerPrefs.GetInt("Lang") == 1)
         {
             textOutro.text =
