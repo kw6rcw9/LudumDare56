@@ -956,10 +956,6 @@ PrefabInstance:
       value: 2.3
       objectReference: {fileID: 0}
     - target: {fileID: 6775350382421959989, guid: 6b4bfcce45b0146898811c9c9f511582, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -1602798793, guid: 98c58e95917c90d4993c24f82b6502e6, type: 3}
-    - target: {fileID: 6775350382421959989, guid: 6b4bfcce45b0146898811c9c9f511582, type: 3}
       propertyPath: m_SpriteSortPoint
       value: 0
       objectReference: {fileID: 0}
@@ -970,10 +966,6 @@ PrefabInstance:
     - target: {fileID: 7759242780703445856, guid: 6b4bfcce45b0146898811c9c9f511582, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 9101514757554927248, guid: 6b4bfcce45b0146898811c9c9f511582, type: 3}
-      propertyPath: <Speed>k__BackingField
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9101514757554927248, guid: 6b4bfcce45b0146898811c9c9f511582, type: 3}
       propertyPath: <Animator>k__BackingField

@@ -1462,10 +1462,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.36
       objectReference: {fileID: 0}
-    - target: {fileID: 6077968769843447867, guid: c0ec3bd37f74b4c56b0db1e4c0c6257e, type: 3}
-      propertyPath: <Speed>k__BackingField
-      value: 1.5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
