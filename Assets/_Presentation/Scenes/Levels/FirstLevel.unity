@@ -307,6 +307,10 @@ PrefabInstance:
       propertyPath: nextSceneName
       value: SecondLevel
       objectReference: {fileID: 0}
+    - target: {fileID: 2798637989387001404, guid: 220b386a2bf3645b8aea0451a39dc191, type: 3}
+      propertyPath: voiceLinesWellDone.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3364611828568136645, guid: 220b386a2bf3645b8aea0451a39dc191, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.26000005

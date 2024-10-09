@@ -5701,6 +5701,26 @@ PrefabInstance:
       propertyPath: nextSceneName
       value: FifthLevel
       objectReference: {fileID: 0}
+    - target: {fileID: 3117711594281649969, guid: 64a4cdaec659fe04f95fc448d338df0e, type: 3}
+      propertyPath: voiceLinesWellDone.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3117711594281649969, guid: 64a4cdaec659fe04f95fc448d338df0e, type: 3}
+      propertyPath: voiceLinesWellDone.Array.data[0]
+      value: 
+      objectReference: {fileID: 185759204094471779, guid: 0b90ef9abf56df5498f4abec73751989, type: 3}
+    - target: {fileID: 3117711594281649969, guid: 64a4cdaec659fe04f95fc448d338df0e, type: 3}
+      propertyPath: voiceLinesWellDone.Array.data[1]
+      value: 
+      objectReference: {fileID: 185759204094471779, guid: 0b90ef9abf56df5498f4abec73751989, type: 3}
+    - target: {fileID: 3117711594281649969, guid: 64a4cdaec659fe04f95fc448d338df0e, type: 3}
+      propertyPath: voiceLinesWellDone.Array.data[2]
+      value: 
+      objectReference: {fileID: 185759204094471779, guid: 0b90ef9abf56df5498f4abec73751989, type: 3}
+    - target: {fileID: 3117711594281649969, guid: 64a4cdaec659fe04f95fc448d338df0e, type: 3}
+      propertyPath: voiceLinesWellDone.Array.data[3]
+      value: 
+      objectReference: {fileID: 185759204094471779, guid: 0b90ef9abf56df5498f4abec73751989, type: 3}
     - target: {fileID: 6204964562065731059, guid: 64a4cdaec659fe04f95fc448d338df0e, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -0.22436523

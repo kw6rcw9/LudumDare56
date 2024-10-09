@@ -1277,6 +1277,14 @@ PrefabInstance:
       propertyPath: nextSceneName
       value: ThirdLevel
       objectReference: {fileID: 0}
+    - target: {fileID: 2798637989387001404, guid: 220b386a2bf3645b8aea0451a39dc191, type: 3}
+      propertyPath: voiceLinesWellDone.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2798637989387001404, guid: 220b386a2bf3645b8aea0451a39dc191, type: 3}
+      propertyPath: voiceLinesWellDone.Array.data[0]
+      value: 
+      objectReference: {fileID: 185759204094471779, guid: f7458df2cfea7864fb2cfcf56f780df5, type: 3}
     - target: {fileID: 3364611828568136645, guid: 220b386a2bf3645b8aea0451a39dc191, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.77
