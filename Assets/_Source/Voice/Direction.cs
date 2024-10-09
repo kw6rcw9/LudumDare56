@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Core;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityWebGLSpeechDetection;
@@ -11,6 +12,7 @@ namespace _Source.Voice
     {
         public static Action<int> movementAction;
         public static Action<int> scoundrelAction;
+        private float lastAction;
 
         
         /// <summary>
@@ -25,6 +27,20 @@ namespace _Source.Voice
         
         private int previousLength = 0; 
         private string previousTranscript = "";
+
+        private void Awake()
+        {
+            LanguageManager.SetLanguageEnAction += setLangEn;
+            LanguageManager.SetLanguageRuAction += setLangRu;
+            Bootstrapper.DisposeAction += Dispose;
+        }
+
+        private void Dispose()
+        {
+            LanguageManager.SetLanguageEnAction -= setLangEn;
+            LanguageManager.SetLanguageRuAction -= setLangRu;
+            Bootstrapper.DisposeAction -= Dispose;
+        }
 
         // Use this for initialization
         private IEnumerator Start()
@@ -43,55 +59,79 @@ namespace _Source.Voice
                 yield return null;
             }
 
+            lastAction = Time.time;
             _mSpeechDetectionPlugin.AddListenerOnDetectionResult(HandleDetectionResult);
         }
+
+        private void setLangEn()
+        {
+            _mSpeechDetectionPlugin?.SetLanguage("en-AU");
+        }
+        
+        private void setLangRu()
+        {
+            _mSpeechDetectionPlugin?.SetLanguage("ru-RU");
+        } 
         
         private bool HandleDetectionResult(DetectionResult detectionResult)
         {
-            if (null == detectionResult?.results)
+            
+            if (null == detectionResult)
             {
                 return false;
             }
-            if (null == detectionResult.results[^1].alternatives)
+            SpeechRecognitionResult[] results = detectionResult.results;
+            if (null == results)
             {
                 return false;
             }
-            string transcript = detectionResult.results[^1].alternatives[0].transcript;
-            string[] splitedTranscript = transcript.Split(new char[] { ' ', '-' }, StringSplitOptions.RemoveEmptyEntries);
-
-            if (splitedTranscript[^1] == previousTranscript && previousLength < transcript.Length)
-            {
-                return false;
-            }
-
-            Debug.Log("Transcription: " + splitedTranscript[^1] + "; prevTranscription: " + previousTranscript + "; prevTranscription: " + previousLength + "; Length: " + splitedTranscript.Length + "; Full: " + transcript);
-
             int direction = 0;
             int scoundrel = 0;
-            
-            switch (splitedTranscript[^1].ToLower())
+
+            foreach (SpeechRecognitionResult result in results)
             {
-                case "вправо" or "right" or "право" or "права":
-                    direction = 1;
+                SpeechRecognitionAlternative[] alternatives = result.alternatives;
+                if (null == alternatives)
+                {
+                    continue;
+                }
+                foreach (SpeechRecognitionAlternative alternative in alternatives)
+                {
+                    if (string.IsNullOrEmpty(alternative.transcript))
+                    {
+                        continue;
+                    }
+                    string lower = alternative.transcript.ToLower();
+
+                    if (lower.Contains("право") || lower.Contains("right"))
+                    {
+                        direction = 1;
+                    }
+                    else if (lower.Contains("низ") || lower.Contains("down"))
+                    {
+                        direction = 2;
+                    }
+                    else if (lower.Contains("лево") || lower.Contains("left"))
+                    {
+                        direction = 3;
+                    }
+                    else if (lower.Contains("верх") || lower.Contains("up"))
+                    {
+                        direction = 4;
+                    }
+                }
+                if (direction != 0 || scoundrel != 0)
+                {
                     break;
-                case "вниз" or "down" or "низ":
-                    direction = 2;
-                    break;
-                case "влево" or "left" or "лево":
-                    direction = 3;
-                    break;
-                case "вверх" or "up" or "верх":
-                    direction = 4;
-                    break;
-                        
-                case "мама" or "mother":
-                    scoundrel = 1;
-                    break;
-                case "гол":
-                    scoundrel = 2;
-                    break;
+                }
             }
 
+            if ((lastAction + 1.1f > Time.time) && (direction != 0 || scoundrel != 0))
+            {
+                _mSpeechDetectionPlugin.Abort();
+                return true;
+            }
+            
             if (direction != 0)
             {
                 movementAction?.Invoke(direction);
@@ -104,8 +144,12 @@ namespace _Source.Voice
                 Debug.Log("Invoked scoundrelAction: " + scoundrel);
             }
 
-            previousLength = splitedTranscript.Length;
-            previousTranscript = splitedTranscript[^1];
+            if (direction != 0 || scoundrel != 0)
+            {
+                lastAction = Time.time;
+                _mSpeechDetectionPlugin.Abort();
+                return true;
+            }
 
             return false;
         }

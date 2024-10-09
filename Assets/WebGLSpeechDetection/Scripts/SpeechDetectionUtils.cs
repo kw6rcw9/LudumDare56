@@ -497,6 +497,7 @@ namespace UnityWebGLSpeechDetection
                 if (null != plugin)
                 {
                     plugin.Abort();
+                    Debug.Log(dialect.name);
                     plugin.SetLanguage(dialect.name);
 
                     LanguageChangedResult languageChangedResult = new LanguageChangedResult();

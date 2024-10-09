@@ -44,11 +44,24 @@ public class LevelManager : MonoBehaviour
 
     private float startedAt;
 
-    private void OnEnable()
+    private void Awake()
     {
         TieInfo.LoseAction += Lose;
         TieInfo.WinAction += Win;
         Timer.LoseAction += Lose;
+        LanguageManager.SetLanguageEnAction += SetLanguageEn;
+        LanguageManager.SetLanguageRuAction += SetLanguageRu;
+        Bootstrapper.DisposeAction += Dispose;
+    }
+
+    private void Dispose()
+    {
+        TieInfo.LoseAction -= Lose;
+        TieInfo.WinAction -= Win;
+        Timer.LoseAction -= Lose;
+        LanguageManager.SetLanguageEnAction -= SetLanguageEn;
+        LanguageManager.SetLanguageRuAction -= SetLanguageRu;
+        Bootstrapper.DisposeAction -= Dispose;
     }
 
     public void SetLanguageRu()
@@ -117,27 +130,9 @@ public class LevelManager : MonoBehaviour
 
     private string getDurationText()
     {
-        float duration = Convert.ToInt32(Time.time - startedAt);
+        int duration = Convert.ToInt32(Time.time - startedAt);
         string durationText = $"{duration / 60:00}:{duration % 60:00}";
         return durationText;
-    }
-
-    private void Awake()
-    {
-        TieInfo.WinAction += Win;
-        TieInfo.LoseAction += Lose;
-        LanguageManager.SetLanguageEnAction += SetLanguageEn;
-        LanguageManager.SetLanguageRuAction += SetLanguageRu;
-        Bootstrapper.DisposeAction += Dispose;
-    }
-
-    public void Dispose()
-    {
-        TieInfo.WinAction -= Win;
-        TieInfo.LoseAction -= Lose;
-        LanguageManager.SetLanguageEnAction -= SetLanguageEn;
-        LanguageManager.SetLanguageRuAction -= SetLanguageRu;
-        Bootstrapper.DisposeAction += Dispose;
     }
 
     private void Start()
