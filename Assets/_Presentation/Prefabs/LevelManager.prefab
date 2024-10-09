@@ -419,6 +419,7 @@ MonoBehaviour:
   successEN: {fileID: 21300000, guid: d8bced4b78314c94e9d2fae4bb1e7062, type: 3}
   successRU: {fileID: 21300000, guid: eaec1ac4050a1144a95e2649db7d3a39, type: 3}
   beautifulText: {fileID: 4725818122646992149}
+  fadein: {fileID: 7190517340724068784}
   voiceLineIntro: {fileID: 185759204094471779, guid: 3c63e4f318a95914fa3c42127e2ea7a2, type: 3}
   voiceLinesWellDone:
   - {fileID: 185759204094471779, guid: 06973fb78cb933549b0dcafd08b2d917, type: 3}
@@ -443,7 +444,8 @@ MonoBehaviour:
   - {fileID: 185759204094471779, guid: a54e927c1504a3e4dbd132866fb79873, type: 3}
   - {fileID: 185759204094471779, guid: 1da850997f8f76142abda8edc9729cc9, type: 3}
   - {fileID: 185759204094471779, guid: 7dae4fc260ab68848ba8d1757ee4c6f7, type: 3}
-  fadein: {fileID: 7190517340724068784}
+  voiceLinesFailure:
+  - {fileID: 185759204094471779, guid: f981d364276e1e04c98fba3fa99ec90e, type: 3}
 --- !u!1 &5102770329684402811
 GameObject:
   m_ObjectHideFlags: 0
