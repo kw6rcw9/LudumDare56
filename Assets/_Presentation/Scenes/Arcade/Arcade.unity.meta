@@ -1,5 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/_Presentation/Scenes/Arcade/Arcade.unity.meta
 guid: 45d17d6323e4c93468fedfc06ff392d7
+========
+guid: 23b67a7358f844eb2b19eb5522e36e1a
+folderAsset: yes
+>>>>>>>> origin/path-anim:Assets/_Presentation/Sprites/Tiles/shader.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

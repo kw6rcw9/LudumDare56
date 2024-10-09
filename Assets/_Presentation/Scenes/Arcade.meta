@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/_Presentation/Scenes/Arcade.meta
 guid: 5801dcc8608cf97439fa5526e04472b5
+========
+guid: 3cc3f47b734824f738357b82287d4f38
+>>>>>>>> origin/path-anim:Assets/_Presentation/Sprites/Tiles/shader/Anim.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

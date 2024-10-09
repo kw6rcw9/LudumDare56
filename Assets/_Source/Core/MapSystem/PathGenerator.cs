@@ -67,24 +67,30 @@ namespace Core.MapSystem
 
         public IEnumerator LightTheWay()
         {
-            //Debug.Log(_lightedPath.Count + "TILES");
-            var amount = _lightedPath.Count;
-            for (int i = 0; i < amount; i++)
-            {
-                yield return new WaitForSeconds(pathLightingDelay);
-                var tile = _lightedPath.Dequeue();
-                tile.GetComponent<SpriteRenderer>().sprite = pathFinder;
-                _fullPath.Add(tile);
-            }
+
+          //Debug.Log(_lightedPath.Count + "TILES");
+          var amount = _lightedPath.Count;
+          for (int i = 0; i < amount ;i++)
+          {
+            yield return new WaitForSeconds(pathLightingDelay);
+            
+            var tile = _lightedPath.Dequeue();
+            tile.GetComponent<TieInfo>().CurrAnimator.Play("LightBlue1");
+            tile.GetComponent<SpriteRenderer>().sprite = pathFinder;
+            _fullPath.Add(tile);
+            
+          }
         }
 
         public IEnumerator ShowOffTheWay()
         {
-            yield return new WaitForSeconds(pathEndDelay);
-            foreach (var tile in _fullPath)
-            {
-                tile.GetComponent<SpriteRenderer>().sprite = defaultCol;
-            }
+
+          yield return new WaitForSeconds(pathEndDelay);
+          foreach (var tile in _fullPath)
+          {
+            tile.GetComponent<TieInfo>().CurrAnimator.Play("LightBlueOff1");
+            tile.GetComponent<SpriteRenderer>().sprite = defaultCol;
+          }
 
             Movement.EnableMovement = true;
             StartTimerAction?.Invoke();

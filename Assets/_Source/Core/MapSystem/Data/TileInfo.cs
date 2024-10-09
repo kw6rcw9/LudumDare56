@@ -20,8 +20,8 @@ namespace Core.MapSystem.Data
         [SerializeField] private AudioClip incorrectSFX;
         [SerializeField] private AudioClip winSFX;
         [SerializeField] private AudioClip electricShockSFX;
-        
-        private Animator _animator;
+        [field: SerializeField] public Animator Animator { get; private set; }
+        [field: SerializeField] public Animator CurrAnimator { get; private set; }
         private bool _errorMove;
         public static Action LoseAction;
         public static Action WinAction;
@@ -31,15 +31,16 @@ namespace Core.MapSystem.Data
             if (!TryGetComponent(out Rigidbody rb))
             {
                 Debug.Log("MAMAAAAAAA");
-                transform.GetComponent<SpriteRenderer>().sprite = firstTile;
+                CurrAnimator.Play("LightGreen1");
+                //transform.GetComponent<SpriteRenderer>().sprite = firstTile;
             }
         }
 
         private void OnTriggerEnter(Collider other)
         {
-            if (_animator == null)
+            if (Animator == null)
             {
-                _animator = other.GetComponent<Animator>();
+                Animator = other.GetComponent<Animator>();
             }
             if (_errorMove)
             {
@@ -47,6 +48,7 @@ namespace Core.MapSystem.Data
             }
             else if (!IsNeeded )
             {
+                
                 Debug.Log("Here???");
                 StartCoroutine( Lose());
             }
@@ -69,7 +71,8 @@ namespace Core.MapSystem.Data
                 audioSource.clip = correctSFX;
                 audioSource.Play();
                 PathGenerator.CorrectPath.Dequeue();
-                transform.GetComponent<SpriteRenderer>().sprite = rightColor;
+                CurrAnimator.Play("LightGreen1");
+                //transform.GetComponent<SpriteRenderer>().sprite = rightColor;
                 if (!PathGenerator.CorrectPath.TryPeek(out Transform res))
                     StartCoroutine( Win());
 
@@ -98,12 +101,13 @@ namespace Core.MapSystem.Data
             yield return new WaitForSeconds(1);
             audioSource.clip = incorrectSFX;
             audioSource.Play();
-            transform.GetComponent<SpriteRenderer>().sprite = loseColor;
+            CurrAnimator.Play("LightRed1");
+            //transform.GetComponent<SpriteRenderer>().sprite = loseColor;
             Debug.Log("Lose");
             yield return new WaitForSeconds(1);
             audioSource.clip = electricShockSFX;
             audioSource.Play();
-            _animator.Play("Electic Shock");
+            Animator.Play("Electic Shock");
             yield return new WaitForSeconds(3);
             LoseAction?.Invoke();
         }

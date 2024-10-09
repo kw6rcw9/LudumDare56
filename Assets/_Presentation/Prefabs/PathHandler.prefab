@@ -66,5 +66,5 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  pathFinder: {fileID: 21300000, guid: 5d81dbd202c704cf68a4c1ab49ec3600, type: 3}
+  pathFinder: {fileID: 21300000, guid: dc9f1119de4a64cae808e1b41c2f536f, type: 3}
   defaultCol: {fileID: 21300000, guid: a06d8c6d0732a41a5831866f41e77e19, type: 3}
