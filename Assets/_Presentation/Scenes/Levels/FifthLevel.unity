@@ -2746,7 +2746,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5e8ba658371024d58a6931a5bbf11703, type: 3}
+  m_Sprite: {fileID: 21300000, guid: accbbdac592674f398cf6493535ce731, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5063,6 +5063,14 @@ PrefabInstance:
       value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6077968769843447867, guid: c0ec3bd37f74b4c56b0db1e4c0c6257e, type: 3}
+      propertyPath: <UpSprite>k__BackingField
+      value: 
+      objectReference: {fileID: 21300000, guid: c8cdcb7e8d7c149b6923d536f663a88a, type: 3}
+    - target: {fileID: 6077968769843447867, guid: c0ec3bd37f74b4c56b0db1e4c0c6257e, type: 3}
+      propertyPath: <LeftSprite>k__BackingField
+      value: 
+      objectReference: {fileID: -1602798793, guid: 98c58e95917c90d4993c24f82b6502e6, type: 3}
+    - target: {fileID: 6077968769843447867, guid: c0ec3bd37f74b4c56b0db1e4c0c6257e, type: 3}
       propertyPath: <DestinationToMoveHor>k__BackingField
       value: 1.5
       objectReference: {fileID: 0}
@@ -5070,6 +5078,10 @@ PrefabInstance:
       propertyPath: <DestinationToMoveVer>k__BackingField
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8363389367052917662, guid: c0ec3bd37f74b4c56b0db1e4c0c6257e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c8cdcb7e8d7c149b6923d536f663a88a, type: 3}
     - target: {fileID: 8646516812714527649, guid: c0ec3bd37f74b4c56b0db1e4c0c6257e, type: 3}
       propertyPath: <IsNeeded>k__BackingField
       value: 1

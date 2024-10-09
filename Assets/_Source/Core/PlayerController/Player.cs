@@ -10,6 +10,9 @@ namespace Core.PlayerController
       [field: SerializeField] public float DestinationToMoveVer { get; set; }
       [field: SerializeField] public TieInfo CurrentTile { get; set; }
       [field: SerializeField] public Animator Animator { get; set; }
+      [field: SerializeField] public Sprite LeftSprite { get; set; }
+      [field: SerializeField] public Sprite UpSprite { get; set; }
+      
     
       
       
