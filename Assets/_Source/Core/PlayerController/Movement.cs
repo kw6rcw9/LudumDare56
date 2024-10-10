@@ -50,6 +50,7 @@ namespace Core.PlayerController
                 return;
             }
             
+            Debug.Log("Here");
             
            // _timer.StopTimer();
             switch (dir)
@@ -69,7 +70,7 @@ namespace Core.PlayerController
                     
             }
 
-            if (Sequence.Count < 2)
+            if (Sequence.Count < 2 && Sequence.Count > 0)
             {
                 var move = Sequence.Peek();
                 move();

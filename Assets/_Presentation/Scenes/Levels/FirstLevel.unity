@@ -369,6 +369,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9220507088684488951, guid: c0ec3bd37f74b4c56b0db1e4c0c6257e, type: 3}
   m_PrefabInstance: {fileID: 6676033556645381788}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &1913845365 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4213593365625351408, guid: 44b4aaeba6d1e784a8f074bcddf64072, type: 3}
+  m_PrefabInstance: {fileID: 177347848777608764}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1970159816 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6169640643075533093, guid: c0ec3bd37f74b4c56b0db1e4c0c6257e, type: 3}
@@ -471,6 +476,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9093796660261140278, guid: 44b4aaeba6d1e784a8f074bcddf64072, type: 3}
+      propertyPath: timer
+      value: 
+      objectReference: {fileID: 941538811}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -884,7 +893,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 105928316}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c8b0d43a81eafb49bdf90716be4db0a, type: 3}
   m_Name: 
@@ -1636,9 +1645,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4251457474775765680, guid: 0d6af601aa96d4fdf9267aef66b05730, type: 3}
+      propertyPath: audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: e41a4b0c27e75d243a9f3a05eb8e072f, type: 3}
+    - target: {fileID: 4251457474775765680, guid: 0d6af601aa96d4fdf9267aef66b05730, type: 3}
       propertyPath: roundDelay
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 4251457474775765680, guid: 0d6af601aa96d4fdf9267aef66b05730, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 1913845365}
     - target: {fileID: 4251457474775765680, guid: 0d6af601aa96d4fdf9267aef66b05730, type: 3}
       propertyPath: boardSize.x
       value: 4

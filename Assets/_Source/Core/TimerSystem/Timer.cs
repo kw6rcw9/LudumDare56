@@ -39,7 +39,6 @@ namespace Core.TimerSystem
             StopAllCoroutines();
         }
         
-       
 
         void StartRoundAction()
         {
@@ -51,13 +50,14 @@ namespace Core.TimerSystem
             _isRunningForUpdate = false;
             PathGenerator.StartTimerAction += StartRoundAction;
             TieInfo.LoseAction += StopTimer;
+            TieInfo.WinAction += StopTimer;
         }
 
         private void OnDisable()
         {
             TieInfo.LoseAction -= StopTimer;
             PathGenerator.StartTimerAction -= StartRoundAction;
-        
+            TieInfo.WinAction -= StopTimer;
         }
 
         void Update()
@@ -97,9 +97,10 @@ namespace Core.TimerSystem
                 animator.Play("Idle Breath");
         }
 
-        public IEnumerator StartTimer()
+        public IEnumerator StartTimer(bool fromPause = false)
         {
-            timeLeft = startTime;
+            if(!fromPause)
+                 timeLeft = startTime;
             //IsRunnning = true;
                 var actionDelay = 0;
             while (timeLeft > 0)

@@ -84,6 +84,7 @@ public class LevelManager : MonoBehaviour
 
     public void Win()
     {
+        //Time.timeScale = 0;
         if (background.activeSelf)
         {
             return;

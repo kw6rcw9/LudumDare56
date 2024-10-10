@@ -13,7 +13,7 @@ public class MoveInput : MonoBehaviour
    
   
 
-    public void Construct(Movement movement)
+    /*public void Construct(Movement movement)
     {
         _movement = movement;
         _input = new();
@@ -27,7 +27,7 @@ public class MoveInput : MonoBehaviour
     {
         _input.Player.Move.performed -= Move;
         _input.Disable();
-    }
+    }*/
 
     void Move(InputAction.CallbackContext context)
     {

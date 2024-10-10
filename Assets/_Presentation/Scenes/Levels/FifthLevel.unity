@@ -770,6 +770,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &183377988 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4213593365625351408, guid: 44b4aaeba6d1e784a8f074bcddf64072, type: 3}
+  m_PrefabInstance: {fileID: 995155444}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &190900740
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3150,13 +3155,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4251457474775765680, guid: 0d6af601aa96d4fdf9267aef66b05730, type: 3}
+      propertyPath: audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: e41a4b0c27e75d243a9f3a05eb8e072f, type: 3}
+    - target: {fileID: 4251457474775765680, guid: 0d6af601aa96d4fdf9267aef66b05730, type: 3}
       propertyPath: pathFinder
       value: 
       objectReference: {fileID: 21300000, guid: 925f65f446560472fb8069860ba7e4bd, type: 3}
     - target: {fileID: 4251457474775765680, guid: 0d6af601aa96d4fdf9267aef66b05730, type: 3}
       propertyPath: roundDelay
-      value: 4
+      value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 4251457474775765680, guid: 0d6af601aa96d4fdf9267aef66b05730, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 183377988}
     - target: {fileID: 4251457474775765680, guid: 0d6af601aa96d4fdf9267aef66b05730, type: 3}
       propertyPath: boardSize.x
       value: 8
@@ -4091,6 +4104,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9093796660261140278, guid: 44b4aaeba6d1e784a8f074bcddf64072, type: 3}
+      propertyPath: timer
+      value: 
+      objectReference: {fileID: 1064137322}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5065,7 +5082,7 @@ PrefabInstance:
     - target: {fileID: 6077968769843447867, guid: c0ec3bd37f74b4c56b0db1e4c0c6257e, type: 3}
       propertyPath: <UpSprite>k__BackingField
       value: 
-      objectReference: {fileID: 21300000, guid: c8cdcb7e8d7c149b6923d536f663a88a, type: 3}
+      objectReference: {fileID: -1602798793, guid: 98c58e95917c90d4993c24f82b6502e6, type: 3}
     - target: {fileID: 6077968769843447867, guid: c0ec3bd37f74b4c56b0db1e4c0c6257e, type: 3}
       propertyPath: <LeftSprite>k__BackingField
       value: 
@@ -5081,7 +5098,7 @@ PrefabInstance:
     - target: {fileID: 8363389367052917662, guid: c0ec3bd37f74b4c56b0db1e4c0c6257e, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: c8cdcb7e8d7c149b6923d536f663a88a, type: 3}
+      objectReference: {fileID: -1602798793, guid: 98c58e95917c90d4993c24f82b6502e6, type: 3}
     - target: {fileID: 8646516812714527649, guid: c0ec3bd37f74b4c56b0db1e4c0c6257e, type: 3}
       propertyPath: <IsNeeded>k__BackingField
       value: 1

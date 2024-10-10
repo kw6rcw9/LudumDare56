@@ -6,11 +6,13 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
+using Timer = Core.TimerSystem.Timer;
 
 namespace _Source.Settings
 {
     public class PauseManager : MonoBehaviour
     {
+        [SerializeField] private Timer timer;
         public static Action SetLanguageRu;
         public static Action SetLanguageEn;
         
@@ -95,6 +97,7 @@ namespace _Source.Settings
 
         private void SetPauseOn()
         {
+            timer.StopTimer();
             SFXSource.Play();
             pauseButton.gameObject.SetActive(false);
             menuObject.gameObject.SetActive(true);
@@ -102,6 +105,7 @@ namespace _Source.Settings
         }
         private void SetPauseOff()
         {
+            StartCoroutine(timer.StartTimer(true));
             SFXSource.Play();
             menuObject.gameObject.SetActive(false);
             pauseButton.gameObject.SetActive(true);

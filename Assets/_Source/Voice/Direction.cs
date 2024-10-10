@@ -95,6 +95,7 @@ namespace _Source.Voice
                 {
                     continue;
                 }
+                
                 foreach (SpeechRecognitionAlternative alternative in alternatives)
                 {
                     if (string.IsNullOrEmpty(alternative.transcript))
@@ -107,7 +108,7 @@ namespace _Source.Voice
                     {
                         direction = 1;
                     }
-                    else if (lower.Contains("низ") || lower.Contains("down"))
+                    else if (lower.Contains("низ") || lower.Contains("down") ||lower.Contains("прямо") || lower.Contains("перёд") )
                     {
                         direction = 2;
                     }

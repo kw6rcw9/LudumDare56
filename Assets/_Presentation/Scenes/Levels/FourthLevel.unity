@@ -534,6 +534,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9093796660261140278, guid: 44b4aaeba6d1e784a8f074bcddf64072, type: 3}
+      propertyPath: timer
+      value: 
+      objectReference: {fileID: 452759772}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -542,6 +546,11 @@ PrefabInstance:
 --- !u!224 &141331300 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3183620530129953343, guid: 44b4aaeba6d1e784a8f074bcddf64072, type: 3}
+  m_PrefabInstance: {fileID: 141331299}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &141331301 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4213593365625351408, guid: 44b4aaeba6d1e784a8f074bcddf64072, type: 3}
   m_PrefabInstance: {fileID: 141331299}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &207451732
@@ -2556,13 +2565,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4251457474775765680, guid: 0d6af601aa96d4fdf9267aef66b05730, type: 3}
+      propertyPath: audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: e41a4b0c27e75d243a9f3a05eb8e072f, type: 3}
+    - target: {fileID: 4251457474775765680, guid: 0d6af601aa96d4fdf9267aef66b05730, type: 3}
       propertyPath: pathFinder
       value: 
       objectReference: {fileID: 21300000, guid: 925f65f446560472fb8069860ba7e4bd, type: 3}
     - target: {fileID: 4251457474775765680, guid: 0d6af601aa96d4fdf9267aef66b05730, type: 3}
       propertyPath: roundDelay
-      value: 4
+      value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 4251457474775765680, guid: 0d6af601aa96d4fdf9267aef66b05730, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 141331301}
     - target: {fileID: 4251457474775765680, guid: 0d6af601aa96d4fdf9267aef66b05730, type: 3}
       propertyPath: boardSize.x
       value: 7

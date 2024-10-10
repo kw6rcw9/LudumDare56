@@ -21,6 +21,8 @@
         [SerializeField] private List<Transform> tiles;
         [SerializeField] private Sprite pathFinder;
         [SerializeField] private Sprite defaultCol;
+        [SerializeField] private AudioClip audioClip;
+        [SerializeField] private AudioSource audioSource;
         public static Action StartTimerAction;
         private Movement _movement;
         private Queue<Transform> _tilesQueue;
@@ -75,6 +77,8 @@
             yield return new WaitForSeconds(pathLightingDelay);
             
             var tile = _lightedPath.Dequeue();
+            audioSource.clip = audioClip;
+            audioSource.Play();
             tile.GetComponent<TieInfo>().CurrAnimator.Play("LightBlue1");
             tile.GetComponent<SpriteRenderer>().sprite = pathFinder;
             _fullPath.Add(tile);
