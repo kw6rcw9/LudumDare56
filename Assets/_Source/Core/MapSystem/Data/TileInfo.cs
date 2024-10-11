@@ -38,6 +38,10 @@ namespace Core.MapSystem.Data
 
         private void OnTriggerEnter(Collider other)
         {
+            if (!other.CompareTag("Player")) {
+                return;
+            }
+            
             if (Animator == null)
             {
                 Animator = other.GetComponent<Animator>();

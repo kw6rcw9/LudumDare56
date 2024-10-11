@@ -7,6 +7,7 @@ using Core.MapSystem.Data;
 using Core.PlayerController;
 using UnityEditor;
 using Random = System.Random;
+using Unity.VisualScripting;
 
 namespace Core.MapSystem
 {
@@ -25,7 +26,7 @@ namespace Core.MapSystem
         [SerializeField] private AudioSource audioSource;
         [SerializeField] private GameObject row;
         [SerializeField] private GameObject tile;
-        [SerializeField] private BoxCollider playerColider;
+        [SerializeField] private GameObject player;
         public static Action StartTimerAction;
         private Movement _movement;
         private Queue<Transform> _tilesQueue;
@@ -34,11 +35,54 @@ namespace Core.MapSystem
         public static Queue<Transform> CorrectPath;
         public static int YBoardSize;
         public static int XBoardSize;
+        public int stage = 1;
+        public Vector3 defaultPlayerPosition;
 
+        public void nextStage() {
+            StartCoroutine(nextStageCoroutine());
+        }
+
+        private IEnumerator nextStageCoroutine() {
+            yield return new WaitForSeconds(1.3f);
+            DestroyTiles();
+            player.transform.localPosition = defaultPlayerPosition;
+            stage += 1;
+            boardSize.x += 1;
+            boardSize.y += 1;
+            // if (0.8 < boardSize.x / boardSize.y) {
+            //     if (boardSize.x / boardSize.y > 1.15) {
+            //         boardSize.y += 1;
+            //     } else {
+            //         boardSize.x += 1;
+            //     }
+            // } else {
+            //     boardSize.y += 1;
+            // }
+            YBoardSize = (int)boardSize.y;
+            XBoardSize = (int)boardSize.x;
+            InitializeTiles();
+            yield return startLevel();
+        }
+
+        private void DestroyTiles() {
+            tiles.Clear();
+            player.GetComponent<BoxCollider>().enabled = false;
+            Debug.Log(player.transform.localPosition);
+            for (int i = 1; i < YBoardSize; i++){
+                for (int j = 0; j < XBoardSize; j++){
+                    Destroy(row.transform.parent.GetChild(i+1).GetChild(j).gameObject);
+                }
+                Destroy(row.transform.parent.GetChild(i + 1).gameObject);
+            }
+            for (int i = 1; i < XBoardSize; i++){
+                Destroy(row.transform.GetChild(i).gameObject);
+            }
+            row.transform.localPosition = new Vector3(0.5f, 0, 0);
+        }
 
         private void InitializeTiles()
         {
-            tiles = new List<Transform> { };
+            tiles.Clear();
 
             Debug.Log(tiles.Capacity);
 
@@ -54,7 +98,11 @@ namespace Core.MapSystem
                 }
                 newTile.transform.localPosition = tile.transform.localPosition + new Vector3(1.5f * i, 0, 0);
                 newTile.transform.localRotation = tile.transform.localRotation;
+            }
 
+            if (player.GetComponent<BoxCollider>() != null)
+            {
+                player.GetComponent<BoxCollider>().enabled = false;
             }
 
             for (int i = 1; i < YBoardSize; i++)
@@ -69,6 +117,7 @@ namespace Core.MapSystem
             {
                 for (int j = 0; j < XBoardSize; j++)
                 {
+                    Debug.Log(i + ":" + j);
                     tiles.Add(row.transform.parent.GetChild(i + 1).GetChild(j));
                 }
             }
@@ -77,10 +126,6 @@ namespace Core.MapSystem
 
         private void Awake()
         {
-            if (playerColider != null)
-            {
-                playerColider.enabled = false;
-            }
             YBoardSize = (int)boardSize.y;
             XBoardSize = (int)boardSize.x;
             if (tiles.Count == 0)
@@ -91,6 +136,10 @@ namespace Core.MapSystem
 
         private IEnumerator Start()
         {
+            yield return startLevel();
+        }
+
+        private IEnumerator startLevel() {
             CorrectPath = new Queue<Transform>();
             _tilesQueue = new Queue<Transform>();
             _lightedPath = new Queue<Transform>();
@@ -113,15 +162,14 @@ namespace Core.MapSystem
 
             yield return new WaitForSeconds(roundDelay);
             RandomGeneration();
-            if (playerColider != null)
+            if (player.GetComponent<BoxCollider>() != null)
             {
-                playerColider.enabled = true;
+                player.GetComponent<BoxCollider>().enabled = true;
             }
             StartCoroutine(LightTheWay());
             StartCoroutine(ShowOffTheWay());
             Debug.Log("Correct tiles: " + CorrectPath.Count);
             Debug.Log(CorrectPath.Peek());
-
         }
 
         public void Construct(Movement movement)

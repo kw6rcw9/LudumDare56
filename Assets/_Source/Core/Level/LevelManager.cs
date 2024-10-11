@@ -14,6 +14,7 @@ using UnityEngine.SceneManagement;
 using Timer = Core.TimerSystem.Timer;
 
 using DG.Tweening;
+using Core.MapSystem;
 
 
 public class LevelManager : MonoBehaviour
@@ -41,6 +42,8 @@ public class LevelManager : MonoBehaviour
     public VoiceLine[] voiceLinesWellDone;
     public VoiceLine[] voiceLinesRandom;
     public VoiceLine[] voiceLinesFailure;
+    public bool isArcade;
+    public PathGenerator pathGenerator;
 
     private float startedAt;
 
@@ -84,6 +87,10 @@ public class LevelManager : MonoBehaviour
 
     public void Win()
     {
+        if (isArcade) {
+            pathGenerator.nextStage();
+            return;
+        }
         //Time.timeScale = 0;
         if (background.activeSelf)
         {

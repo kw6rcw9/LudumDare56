@@ -308,6 +308,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 2.1817627
       objectReference: {fileID: 0}
+    - target: {fileID: 3117711594281649969, guid: 64a4cdaec659fe04f95fc448d338df0e, type: 3}
+      propertyPath: isArcade
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3117711594281649969, guid: 64a4cdaec659fe04f95fc448d338df0e, type: 3}
+      propertyPath: pathGenerator
+      value: 
+      objectReference: {fileID: 1300375884958657960}
     - target: {fileID: 6204964562065731059, guid: 64a4cdaec659fe04f95fc448d338df0e, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -0.22436523
@@ -1400,8 +1408,8 @@ MonoBehaviour:
   firstRoundDelay: 16
   roundDelay: 4
   pathLightingDelay: 0.2
-  pathEndDelay: 20
-  boardSize: {x: 5, y: 5}
+  pathEndDelay: 0
+  boardSize: {x: 3, y: 3}
   tiles: []
   pathFinder: {fileID: 21300000, guid: 912d8266f12434396b62d3d9ebc44fb5, type: 3}
   defaultCol: {fileID: 21300000, guid: a06d8c6d0732a41a5831866f41e77e19, type: 3}
@@ -1409,7 +1417,9 @@ MonoBehaviour:
   audioSource: {fileID: 656219076}
   row: {fileID: 5505578385133135911}
   tile: {fileID: 8601283243794020500}
-  playerColider: {fileID: 7187744671229662516}
+  player: {fileID: 3032711557087104214}
+  stage: 1
+  defaultPlayerPosition: {x: 0.53, y: 0.241, z: -0.019}
 --- !u!1 &1613759476426636010
 GameObject:
   m_ObjectHideFlags: 0
