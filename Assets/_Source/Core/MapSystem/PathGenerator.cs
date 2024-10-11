@@ -23,6 +23,8 @@
         [SerializeField] private Sprite defaultCol;
         [SerializeField] private AudioClip audioClip;
         [SerializeField] private AudioSource audioSource;
+        [SerializeField] private GameObject row;
+        [SerializeField] private GameObject tile;
         public static Action StartTimerAction;
         private Movement _movement;
         private Queue<Transform> _tilesQueue;
@@ -31,8 +33,51 @@
         public static Queue<Transform> CorrectPath;
         public static int YBoardSize;
 
+        
+        private void InitializeTiles()
+        {
+            tiles = new List<Transform> {};
+            // tiles = Convert.ToInt32(boardSize.x * boardSize.y);
+            
+            Debug.Log(tiles.Capacity);
+            
+            row.transform.localPosition += new Vector3(Convert.ToInt32(boardSize.x) / 2 * - 1.5f,0,0);
+            
+            for (int i = 1; i < boardSize.x; i++)
+            {
+                GameObject newTile = Instantiate(tile);
+                newTile.transform.SetParent(row.transform);
+                if (i == boardSize.x / 2)
+                {
+                    Destroy(newTile.GetComponent<Rigidbody>());
+                    newTile.GetComponent<TieInfo>().IsNeeded = true;
+                    newTile.GetComponent<TieInfo>().NumInRow = 0;
+                }
+                newTile.transform.localPosition = tile.transform.localPosition + new Vector3(1.5f*i,0,0);
+                newTile.transform.localRotation = tile.transform.localRotation;
+                
+            }
+            
+            for (int i = 1; i < boardSize.y; i++)
+            {
+                GameObject newRow = Instantiate(row);
+                newRow.transform.SetParent(row.transform.parent);
+                newRow.transform.localPosition = row.transform.localPosition + new Vector3(0,1.5f*i,0);
+                newRow.transform.localRotation = row.transform.localRotation;
+            }
+            
+            for (int i = 0; i < boardSize.x; i++)
+            {
+                for (int j = 0; j < boardSize.y; j++)
+                {
+                    tiles.Add(row.transform.parent.GetChild(j+1).GetChild(i));
+                }
+            }
+        }
+
         private IEnumerator Start()
         {
+            InitializeTiles();
           YBoardSize = (int)boardSize.y;
           CorrectPath = new Queue<Transform>();
           _tilesQueue = new Queue<Transform>();
