@@ -1409,7 +1409,7 @@ MonoBehaviour:
   audioSource: {fileID: 656219076}
   row: {fileID: 5505578385133135911}
   tile: {fileID: 8601283243794020500}
-  player: {fileID: 3032711557087104214}
+  playerColider: {fileID: 7187744671229662516}
 --- !u!1 &1613759476426636010
 GameObject:
   m_ObjectHideFlags: 0
@@ -1530,7 +1530,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7759242780703445856, guid: 6b4bfcce45b0146898811c9c9f511582, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7759242780703445856, guid: 6b4bfcce45b0146898811c9c9f511582, type: 3}
       propertyPath: m_TagString
@@ -1797,7 +1797,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}

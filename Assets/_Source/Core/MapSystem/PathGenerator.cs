@@ -25,7 +25,7 @@ namespace Core.MapSystem
         [SerializeField] private AudioSource audioSource;
         [SerializeField] private GameObject row;
         [SerializeField] private GameObject tile;
-        [SerializeField] private GameObject player;
+        [SerializeField] private BoxCollider playerColider;
         public static Action StartTimerAction;
         private Movement _movement;
         private Queue<Transform> _tilesQueue;
@@ -77,6 +77,10 @@ namespace Core.MapSystem
 
         private void Awake()
         {
+            if (playerColider != null)
+            {
+                playerColider.enabled = false;
+            }
             YBoardSize = (int)boardSize.y;
             XBoardSize = (int)boardSize.x;
             if (tiles.Count == 0)
@@ -87,7 +91,6 @@ namespace Core.MapSystem
 
         private IEnumerator Start()
         {
-            // player.SetActive(true);
             CorrectPath = new Queue<Transform>();
             _tilesQueue = new Queue<Transform>();
             _lightedPath = new Queue<Transform>();
@@ -110,6 +113,10 @@ namespace Core.MapSystem
 
             yield return new WaitForSeconds(roundDelay);
             RandomGeneration();
+            if (playerColider != null)
+            {
+                playerColider.enabled = true;
+            }
             StartCoroutine(LightTheWay());
             StartCoroutine(ShowOffTheWay());
             Debug.Log("Correct tiles: " + CorrectPath.Count);
