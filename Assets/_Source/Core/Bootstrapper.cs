@@ -12,7 +12,7 @@ namespace Core
         [SerializeField] private Player player;
         [SerializeField] private Timer timer;
         [SerializeField] private AudioSource audioSourceSFX;
-  
+
         [SerializeField] private PathGenerator pathGenerator;
         private Movement _movement;
         public static Action DisposeAction;
@@ -23,7 +23,7 @@ namespace Core
             if (player != null)
             {
                 _movement = new Movement(player, timer, audioSourceSFX);
-                    //moveInput.Construct(_movement);
+                // moveInput.Construct(_movement);
                 pathGenerator.Construct(_movement);
             }
         }

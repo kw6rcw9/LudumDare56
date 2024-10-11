@@ -14,19 +14,8 @@ namespace _Source.Voice
         public static Action<int> scoundrelAction;
         private float lastAction;
 
-        
-        /// <summary>
-        /// Reference to the detection plugin
-        /// </summary>
-        private ISpeechDetectionPlugin _mSpeechDetectionPlugin = null;
 
-        /// <summary>
-        /// Reference to the synthesis plugin
-        /// </summary>
-        private ISpeechSynthesisPlugin _mSpeechSynthesisPlugin = null;
-        
-        private int previousLength = 0; 
-        private string previousTranscript = "";
+        private ISpeechDetectionPlugin _mSpeechDetectionPlugin = null;
 
         private void Awake()
         {
@@ -67,15 +56,15 @@ namespace _Source.Voice
         {
             _mSpeechDetectionPlugin?.SetLanguage("en-AU");
         }
-        
+
         private void setLangRu()
         {
             _mSpeechDetectionPlugin?.SetLanguage("ru-RU");
-        } 
-        
+        }
+
         private bool HandleDetectionResult(DetectionResult detectionResult)
         {
-            
+
             if (null == detectionResult)
             {
                 return false;
@@ -95,7 +84,7 @@ namespace _Source.Voice
                 {
                     continue;
                 }
-                
+
                 foreach (SpeechRecognitionAlternative alternative in alternatives)
                 {
                     if (string.IsNullOrEmpty(alternative.transcript))
@@ -109,11 +98,11 @@ namespace _Source.Voice
                     {
                         direction = 1;
                     }
-                    else if (lower.Contains("низ") || lower.Contains("down") ||lower.Contains("прямо") || lower.Contains("перёд") )
+                    else if (lower.Contains("низ") || lower.Contains("down") || lower.Contains("прямо") || lower.Contains("перёд"))
                     {
                         direction = 2;
                     }
-                    else if (lower.Contains("лево") || lower.Contains("left") || lower.Contains("лего") || lower.Contains("налево") || lower.Contains("ле") )
+                    else if (lower.Contains("лево") || lower.Contains("left") || lower.Contains("лего") || lower.Contains("налево") || lower.Contains("ле"))
                     {
                         direction = 3;
                     }
@@ -133,7 +122,7 @@ namespace _Source.Voice
                 _mSpeechDetectionPlugin.Abort();
                 return true;
             }
-            
+
             if (direction != 0)
             {
                 movementAction?.Invoke(direction);
