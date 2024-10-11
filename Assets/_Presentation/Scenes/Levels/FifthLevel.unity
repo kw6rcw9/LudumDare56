@@ -5844,7 +5844,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3117711594281649969, guid: 64a4cdaec659fe04f95fc448d338df0e, type: 3}
       propertyPath: nextSceneName
-      value: FifthLevel
+      value: Outro
       objectReference: {fileID: 0}
     - target: {fileID: 3117711594281649969, guid: 64a4cdaec659fe04f95fc448d338df0e, type: 3}
       propertyPath: voiceLinesWellDone.Array.size
