@@ -94,19 +94,19 @@ namespace _Source.Voice
                     string lower = alternative.transcript.ToLower();
 
                     Debug.Log("Услышал: " + lower);
-                    if (lower.Contains("право") || lower.Contains("right") || lower.Contains("пра"))
+                    if (lower.Contains("прав") || lower.Contains("right"))
                     {
                         direction = 1;
                     }
-                    else if (lower.Contains("низ") || lower.Contains("down") || lower.Contains("прямо") || lower.Contains("перёд"))
+                    else if (lower.Contains("низ") || lower.Contains("down"))
                     {
                         direction = 2;
                     }
-                    else if (lower.Contains("лево") || lower.Contains("left") || lower.Contains("лего") || lower.Contains("налево") || lower.Contains("ле"))
+                    else if (lower.Contains("лево") || lower.Contains("left") || lower.Contains("лего"))
                     {
                         direction = 3;
                     }
-                    else if (lower.Contains("верх") || lower.Contains("up"))
+                    else if (lower.Contains("верх") || lower.Contains("up") || lower.Contains("перёд") || lower.Contains("прямо") || lower.Contains("app"))
                     {
                         direction = 4;
                     }
