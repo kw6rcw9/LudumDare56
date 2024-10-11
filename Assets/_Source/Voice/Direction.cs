@@ -104,7 +104,8 @@ namespace _Source.Voice
                     }
                     string lower = alternative.transcript.ToLower();
 
-                    if (lower.Contains("право") || lower.Contains("right"))
+                    Debug.Log("Услышал: " + lower);
+                    if (lower.Contains("право") || lower.Contains("right") || lower.Contains("пра"))
                     {
                         direction = 1;
                     }
@@ -112,7 +113,7 @@ namespace _Source.Voice
                     {
                         direction = 2;
                     }
-                    else if (lower.Contains("лево") || lower.Contains("left"))
+                    else if (lower.Contains("лево") || lower.Contains("left") || lower.Contains("лего") || lower.Contains("налево") || lower.Contains("ле") )
                     {
                         direction = 3;
                     }
