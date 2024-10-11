@@ -15,7 +15,7 @@ namespace _Source.Settings
         [SerializeField] private Timer timer;
         public static Action SetLanguageRu;
         public static Action SetLanguageEn;
-        
+
         public Button pauseButton;
         public Button continueButton;
         public Sprite continueButtonRu;
@@ -79,7 +79,7 @@ namespace _Source.Settings
             settingsPannel.GetComponent<Image>().sprite = settingsPannelEn;
             continueButton.gameObject.GetComponent<Image>().sprite = continueButtonEn;
         }
-        
+
         private void SetLangRu()
         {
             SFXSource.Play();
@@ -97,7 +97,7 @@ namespace _Source.Settings
 
         private void SetPauseOn()
         {
-            timer.StopTimer();
+            timer?.StopTimer();
             SFXSource.Play();
             pauseButton.gameObject.SetActive(false);
             menuObject.gameObject.SetActive(true);
@@ -105,7 +105,10 @@ namespace _Source.Settings
         }
         private void SetPauseOff()
         {
-            StartCoroutine(timer.StartTimer(true));
+            if (timer != null)
+            {
+                StartCoroutine(timer.StartTimer(true));
+            }
             SFXSource.Play();
             menuObject.gameObject.SetActive(false);
             pauseButton.gameObject.SetActive(true);
@@ -135,8 +138,9 @@ namespace _Source.Settings
             soundButton.onClick.AddListener(SoundOff);
             Debug.Log("SoundOn worked out");
         }
-        
-        private void AwakeSoundUI() {
+
+        private void AwakeSoundUI()
+        {
             if (PlayerPrefs.HasKey("Sound"))
             {
                 soundSlider.value = PlayerPrefs.GetFloat("Sound");
@@ -159,31 +163,34 @@ namespace _Source.Settings
             }
         }
 
-        
+
         private void ChangeSound(float value)
         {
             SFXSource.Play();
             audioMixer.SetFloat("Sound", value);
             PlayerPrefs.SetFloat("Sound", value);
-            if (PlayerPrefs.GetInt("IsSound") == 1) {
+            if (PlayerPrefs.GetInt("IsSound") == 1)
+            {
                 SoundOn();
             }
             PlayerPrefs.Save();
             Debug.Log("ChangeSound worked out; Sound: " + PlayerPrefs.GetFloat("Sound"));
         }
-        
+
         public void ChangeMusic(float value)
         {
             SFXSource.Play();
             audioMixer.SetFloat("Music", value);
             PlayerPrefs.SetFloat("Music", value);
-            if (PlayerPrefs.GetInt("IsMusic") == 1) {
+            if (PlayerPrefs.GetInt("IsMusic") == 1)
+            {
                 MusicOn();
             }
             PlayerPrefs.Save();
             Debug.Log("ChangeMusic worked out; Music: " + PlayerPrefs.GetFloat("Music"));
         }
-        private void AwakeMusicUI() {
+        private void AwakeMusicUI()
+        {
             if (PlayerPrefs.HasKey("Music"))
             {
                 musicSlider.value = PlayerPrefs.GetFloat("Music");
@@ -205,7 +212,7 @@ namespace _Source.Settings
                 MusicOn();
             }
         }
-        
+
         private void MusicOff()
         {
             SFXSource.Play();
