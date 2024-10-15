@@ -98,15 +98,15 @@ namespace _Source.Voice
                     {
                         direction = 1;
                     }
-                    else if (lower.Contains("низ") || lower.Contains("down"))
-                    {
-                        direction = 2;
-                    }
+                    // else if (lower.Contains("низ") || lower.Contains("down"))
+                    // {
+                    //     direction = 2;
+                    // }
                     else if (lower.Contains("лево") || lower.Contains("left") || lower.Contains("лего"))
                     {
                         direction = 3;
                     }
-                    else if (lower.Contains("верх") || lower.Contains("up") || lower.Contains("перёд") || lower.Contains("прямо") || lower.Contains("app"))
+                    else if (lower.Contains("верх") || lower.Contains("up") || lower.Contains("перёд") || lower.Contains("прямо") || lower.Contains("app") || lower.Contains("forward"))
                     {
                         direction = 4;
                     }
