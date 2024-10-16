@@ -20,9 +20,12 @@ public class LevelManager : MonoBehaviour
 {
     public TMP_Text timeTextTime;
     public Button nextButton;
+    public Button exitButton;
     public string nextSceneName;
     public Sprite nextButtonEN;
+    public Sprite exitButtonEN;
     public Sprite nextButtonRU;
+    public Sprite exitButtonRU;
     public Button restartButton;
     public Sprite restartButtonEN;
     public Sprite restartButtonRU;
@@ -68,6 +71,7 @@ public class LevelManager : MonoBehaviour
     {
         nextButton.gameObject.GetComponent<Image>().sprite = nextButtonRU;
         restartButton.gameObject.GetComponent<Image>().sprite = restartButtonRU;
+        exitButton.gameObject.GetComponent<Image>().sprite = exitButtonRU;
         background.GetComponent<Image>().sprite = backgroundRU;
         failure.sprite = failureRU;
         success.sprite = successRU;
@@ -77,6 +81,7 @@ public class LevelManager : MonoBehaviour
     {
         nextButton.gameObject.GetComponent<Image>().sprite = nextButtonEN;
         restartButton.gameObject.GetComponent<Image>().sprite = restartButtonEN;
+        exitButton.gameObject.GetComponent<Image>().sprite = exitButtonEN;
         background.GetComponent<Image>().sprite = backgroundEN;
         failure.sprite = failureEN;
         success.sprite = successEN;
@@ -96,6 +101,7 @@ public class LevelManager : MonoBehaviour
 
         background.SetActive(true);
         nextButton.gameObject.SetActive(true);
+        exitButton.gameObject.SetActive(true);
         success.gameObject.SetActive(true);
         timeTextTime.text = getDurationText();
     }
@@ -113,6 +119,8 @@ public class LevelManager : MonoBehaviour
 
         background.SetActive(true);
         restartButton.gameObject.SetActive(true);
+        exitButton.gameObject.SetActive(true);
+        
         failure.gameObject.SetActive(true);
         timeTextTime.text = getDurationText();
     }
@@ -122,11 +130,16 @@ public class LevelManager : MonoBehaviour
         Debug.Log("NextScene");
         SceneManager.LoadScene(nextSceneName);
     }
+    public void ExitScene()
+    {
+        Debug.Log("NextScene");
+        SceneManager.LoadScene("Main Menu");
+    }
 
     public void RestartScene()
     {
         Debug.Log("RestartScene");
-        SceneManager.LoadScene("Main Menu");
+        SceneManager.LoadScene("FirstLevel");
     }
 
     private string getDurationText()
@@ -141,6 +154,8 @@ public class LevelManager : MonoBehaviour
         startedAt = Time.time;
         nextButton.onClick.AddListener(NextScene);
         restartButton.onClick.AddListener(RestartScene);
+        exitButton.onClick.AddListener(ExitScene);
+        
         if (!PlayerPrefs.HasKey("StartMessage"))
         {
             StartCoroutine(NewMessageWithVLAfterDelay(voiceLineIntro, 1.5f));

@@ -13,7 +13,7 @@ public class MoveInput : MonoBehaviour
    
   
 
-    /*public void Construct(Movement movement)
+    public void Construct(Movement movement)
     {
         _movement = movement;
         _input = new();
@@ -27,19 +27,19 @@ public class MoveInput : MonoBehaviour
     {
         _input.Player.Move.performed -= Move;
         _input.Disable();
-    }*/
+    }
 
     void Move(InputAction.CallbackContext context)
     {
         Debug.Log("wasd");
         var vector = context.ReadValue<Vector2>();
         if(vector.x > 0 )
-            _movement.MoveRight();
-        if(vector.x < 0)
-            _movement.MoveLeft();
-        if (vector.y > 0)
+            _movement.Move(1);
+        else if(vector.x < 0)
+            _movement.Move(3);
+        else if (vector.y > 0)
         {
-            _movement.MoveUp();
+            _movement.Move(4);
         }
     }
  

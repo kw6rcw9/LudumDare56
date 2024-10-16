@@ -396,6 +396,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: PausePref
       objectReference: {fileID: 0}
+    - target: {fileID: 3026492607775675363, guid: 44b4aaeba6d1e784a8f074bcddf64072, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3026492607775675363, guid: 44b4aaeba6d1e784a8f074bcddf64072, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3026492607775675363, guid: 44b4aaeba6d1e784a8f074bcddf64072, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3183620530129953343, guid: 44b4aaeba6d1e784a8f074bcddf64072, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -474,6 +486,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3183620530129953343, guid: 44b4aaeba6d1e784a8f074bcddf64072, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3439975237182060928, guid: 44b4aaeba6d1e784a8f074bcddf64072, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3439975237182060928, guid: 44b4aaeba6d1e784a8f074bcddf64072, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3439975237182060928, guid: 44b4aaeba6d1e784a8f074bcddf64072, type: 3}
+      propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9093796660261140278, guid: 44b4aaeba6d1e784a8f074bcddf64072, type: 3}
@@ -611,7 +635,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -727,6 +751,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1727206115987469924}
     m_Modifications:
+    - target: {fileID: 272831372236756867, guid: 64a4cdaec659fe04f95fc448d338df0e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 676289326479807712, guid: 64a4cdaec659fe04f95fc448d338df0e, type: 3}
       propertyPath: m_Name
       value: LevelManager
@@ -893,7 +921,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 105928316}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c8b0d43a81eafb49bdf90716be4db0a, type: 3}
   m_Name: 

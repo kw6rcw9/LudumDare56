@@ -41,12 +41,14 @@ namespace Core.PlayerController
             Direction.movementAction += Move;
         }
 
-        void Move(int dir)
+        public void Move(int dir)
         {
             Debug.Log(Sequence.Count);
             
             if (!EnableMovement)
             {
+                if(Sequence.Count > 0)
+                    Sequence.Dequeue();
                 return;
             }
             
@@ -72,6 +74,7 @@ namespace Core.PlayerController
 
             if (Sequence.Count < 2 && Sequence.Count > 0)
             {
+                Debug.Log("From move");
                 var move = Sequence.Peek();
                 move();
             }
@@ -82,6 +85,8 @@ namespace Core.PlayerController
             if (!EnableMovement || !EnableLeftMovement)
             
             {
+                if(Sequence.Count > 0)
+                    Sequence.Dequeue();
                 return;
             }
 
@@ -110,6 +115,8 @@ namespace Core.PlayerController
              
             if (!EnableMovement || !EnableRightMovement)
             {
+                if(Sequence.Count > 0)
+                    Sequence.Dequeue();
                 return;
             }
             _audioSourceSFX.Play();
@@ -134,6 +141,7 @@ namespace Core.PlayerController
              
             if (!EnableMovement)
             {
+                Sequence.Dequeue();
                 return;
             }
             _audioSourceSFX.Play();
